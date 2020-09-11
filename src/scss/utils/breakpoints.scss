@@ -1,0 +1,71 @@
+$grid-columns: 12 !default;
+$grid-gutter-width: 24px !default;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 768px,
+  md: 992px,
+  lg: 1024px,
+  xl: 1200px
+  // you can add a new breakpoint here.
+);
+
+$container-max-widths: (
+  sm: 768px,
+  md: 920px,
+  lg: 1024px,
+  xl: 1254px
+  // you can add a new breakpoint container-max-width here.
+);
+
+@mixin xs {
+	@media (min-width: 0) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@media (min-width: map-get($grid-breakpoints, 'sm')) {
+		@content;
+	}
+}
+
+@mixin md {
+	@media (min-width: map-get($grid-breakpoints, 'md')) {
+		@content;
+	}
+}
+
+@mixin lg {
+	@media (min-width:  map-get($grid-breakpoints, 'lg')) {
+		@content;
+	}
+}
+
+@mixin xl {
+	@media (min-width:  map-get($grid-breakpoints, 'xl')) {
+		@content;
+	}
+}
+
+// CUSTOM BREAKPOINTS
+
+@mixin max-md {
+	@media (max-width: 991px) {
+		@content;
+	}
+}
+
+@mixin large-mobile {
+	@media (min-width: 420px) {
+		@content;
+	}
+}
+
+@mixin max-mobile {
+	@media (max-width: 767px) {
+		@content;
+	}
+}
+
+@import '../vendor/bootstrap-variables.scss';
