@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SurvivorsService } from './core/services/survivors.service';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +9,10 @@ import { SurvivorsService } from './core/services/survivors.service';
 
 export class AppComponent implements OnInit {
 
-  constructor(private service: SurvivorsService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.service.get().subscribe(res => {
-      console.log(res);
-    });
+
   }
 
 }

@@ -1,1 +1,23 @@
-<p>create-edit-survivor works!</p>
+<div data-component="create-edit-survivor">
+  <h2 class="title">Bruno Azzi</h2>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="row">
+      <div class="form-control col-md-4">
+        <label for="name">Name</label>
+        <input type="text" id="name">
+      </div>
+
+      <div class="form-control col-md-4">
+        <label for="age">Age</label>
+        <input type="number" id="age">
+      </div>
+
+      <div class="form-control col-md-4">
+        <label for="gender">Gender</label>
+        <input type="radio" id="M">
+        <input type="radio" id="F">
+      </div>
+    </div>
+  </form>
+</div>

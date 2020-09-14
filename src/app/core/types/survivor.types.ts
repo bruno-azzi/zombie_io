@@ -6,4 +6,6 @@ export interface Survivor {
   lonlat?: string;
   items: string;
   infected?: boolean;
+  initialLetters?: string;
+  location?: string;
 }

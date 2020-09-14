@@ -1,0 +1,236 @@
+@import 'base/imports';
+
+[data-component='survivor-list'] {
+
+  .card-column {
+    margin-bottom: 12px;
+
+    @include sm {
+      margin-bottom: 24px;
+    }
+  }
+
+  .card {
+    border-radius: 8px;
+    background-color: $light-grey;
+    padding: 8px 10px 8px 8px;
+    display: flex;
+    align-items: center;
+    transition: 250ms ease;
+    height: 100%;
+    box-shadow: 0 0 5px 0 transparent;
+
+    @include sm {
+      padding: 12px 16px 12px 12px;
+    }
+
+    &:hover {
+      box-shadow: 0 0 5px 0 rgba($color: $main-green, $alpha: .5);
+
+      .text-wrapper {
+        .name {
+          color: $main-green;
+        }
+      }
+    }
+
+    .picture-wrapper {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 16px;
+      background-color: $dark-grey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 10px 0 rgba($color: $main-green, $alpha: .1);
+
+      @include sm {
+        width: 60px;
+        height: 60px;
+        margin-right: 20px;
+        font-size: 24px;
+      }
+
+      .initials {
+        color: $main-green;
+      }
+    }
+
+    .text-wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .name {
+        transition: 250ms ease;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        word-break: break-word;
+
+        @include sm {
+          font-size: 17px;
+        }
+
+        span {
+          font-weight: 400;
+          font-size: 15px;
+          line-height: 24px;
+
+          @include sm {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .status {
+        font-size: 15px;
+
+        @include sm {
+          font-size: 16px;
+        }
+
+        &.infected {
+          color: $red;
+        }
+
+        &.healthy {
+          color: $green;
+        }
+      }
+    }
+
+    &.card-loader {
+      .picture-wrapper {
+        box-shadow: none;
+        background-color: transparent;
+
+        .loader {
+          width: 60px;
+          height: 60px;
+        }
+      }
+
+      .text-wrapper {
+        ngx-skeleton-loader {
+          .loader {
+            &:last-child {
+              margin: 0;
+              width: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .not-found {
+    padding: 120px 0 180px;
+    text-align: center;
+    font-size: 24px;
+    color: $main-green;
+  }
+
+  .ngx-pagination {
+    text-align: center;
+    margin: 40px 0 25px;
+
+    li {
+      border-radius: 50%;
+      border: 1px solid $main-green;
+      padding: 0;
+      box-shadow: 0 0 10px 0 transparent;
+      transition: 300ms ease;
+
+      &:not(.disabled):not(.small-screen):hover {
+        box-shadow: 0 0 10px 0 rgba($color: $main-green, $alpha: 1);
+      }
+
+      &.disabled {
+        display: none;
+      }
+
+      & + li {
+        margin-left: 8px;
+      }
+
+      &.current {
+        background-color: $main-green;
+
+        span {
+          color: $dark-grey;
+        }
+      }
+
+      &.pagination-previous,
+      &.pagination-next {
+        height: auto;
+        width: auto;
+        border-radius: 8px;
+        background-color: $main-green;
+
+        &:after,
+        &:before {
+          display: none;
+        }
+
+        a,
+        span {
+          padding: 2px 8px;
+          color: $dark-grey;
+
+          &:after,
+          &:before {
+            display: none;
+          }
+        }
+      }
+
+      a,
+      span {
+        font-weight: 600;
+        padding: 0;
+        height: 30px;
+        width: auto;
+        min-width: 30px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+
+      &:not(.pagination-next):not(.pagination-previous):not(.small-screen) {
+        display: none;
+
+        @include sm {
+          display: inline-flex;
+        }
+      }
+
+      &.small-screen {
+        border: 0;
+        padding: 0 6px;
+        display: inline-flex;
+
+        @include sm {
+          display: none;
+        }
+      }
+    }
+  }
+
+  [data-component="filter"] {
+    margin: 0 0 10px;
+
+    @include sm {
+      margin: 0 0 24px;
+    }
+  }
+
+}

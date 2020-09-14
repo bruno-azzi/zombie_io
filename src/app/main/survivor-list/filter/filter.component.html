@@ -1,0 +1,25 @@
+<form data-component="filter" [formGroup]="form">
+  <div class="row">
+    <div class="col-md-4">
+      <app-input
+        label="Name"
+        id="name"
+        placeholder="Search for name"
+        [formControl]="form.get('name')"
+        maxlength="100"
+      >
+      </app-input>
+    </div>
+
+    <div class="col-md-4">
+      <app-input
+        label="UUID"
+        id="id"
+        placeholder="Search for UUID"
+        [formControl]="form.get('id')"
+        maxlength="100"
+      >
+      </app-input>
+    </div>
+  </div>
+</form>

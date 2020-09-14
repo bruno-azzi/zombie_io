@@ -1,1 +1,55 @@
-<p>survivor-list works!</p>
+<div data-component="survivor-list">
+  <app-section-title
+    title="Survivor List"
+    [total]="filteredSurvivors.length"
+  >
+  </app-section-title>
+
+  <app-filter
+    (filterOutput)="onFilter($event)"
+    (loaderOutput)="onLoaderOutput()"
+  >
+  </app-filter>
+
+  <div class="row" *ngIf="loading">
+    <div class="card-column col-sm-6 col-md-4 col-xl-3" *ngFor="let card of fakeCardList">
+      <div class="card card-loader">
+        <div class="picture-wrapper">
+          <ngx-skeleton-loader animation="progress-dark" appearance="circle"></ngx-skeleton-loader>
+        </div>
+
+        <div class="text-wrapper">
+          <ngx-skeleton-loader count="2" animation="progress-dark"></ngx-skeleton-loader>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!loading">
+    <div class="card-column col-sm-6 col-md-4 col-xl-3" *ngFor="let survivor of filteredSurvivors | paginate: { itemsPerPage: 24, currentPage: page }">
+      <a [routerLink]="['/survivor', survivor.id]">
+        <div class="card">
+          <div class="picture-wrapper">
+            <span class="initials">{{ survivor.initialLetters }}</span>
+          </div>
+
+          <div class="text-wrapper">
+            <strong class="name">{{ survivor.name }}<span>, {{ survivor.age }}</span></strong>
+            <span class="status" [ngClass]="survivor.infected ? 'infected' : 'healthy'">{{ survivor.infected ? 'Infected' : 'Healthy' }}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <p class="not-found" *ngIf="filteredSurvivors.length === 0 && !loading">No survivors found!</p>
+
+  <pagination-controls
+    autoHide="true"
+    (pageChange)="page = $event"
+    previousLabel="Previous"
+    nextLabel="Next"
+    [maxSize]="maxSize"
+  >
+  </pagination-controls>
+</div>

@@ -8,6 +8,10 @@ import { CreateEditSurvivorComponent } from './create-edit-survivor/create-edit-
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'home'
+  },
+  {
+    path: 'home',
     component: GlobalReportsComponent
   },
   {
@@ -15,8 +19,17 @@ const routes: Routes = [
     component: CreateEditSurvivorComponent
   },
   {
-    path: 'list',
+    path: 'survivor/:id',
+    component: CreateEditSurvivorComponent
+  },
+  {
+    path: 'survivors',
     component: SurvivorListComponent
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 

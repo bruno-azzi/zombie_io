@@ -5687,6 +5687,19 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
+ngx-pagination@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-5.0.0.tgz#a4b4c150a70aef17ccd825e4543e174a974bbd14"
+  integrity sha512-Ur0pTWRe2ZXoJ8impEzo0IZKxY5aEcQfSmL5uBqW1rHI2J6nfzgZAHsSLagKHFGchXq0PkRlDVVMcIaNxYJwvQ==
+
+ngx-skeleton-loader@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/ngx-skeleton-loader/-/ngx-skeleton-loader-2.4.4.tgz#39d714b57c236fcd52e51012d54c63824c8c0e15"
+  integrity sha512-FFwy9XsHmygjL2dI2PfPVCUPR7CA64rAL4veHPmFtjgqKl5AyKatYBtmxxko8mONVckLbiq04SuhupVpvLzHNw==
+  dependencies:
+    perf-marks "^1.13.4"
+    tslib "^1.10.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -6280,6 +6293,13 @@ pbkdf2@^3.0.3:
     ripemd160 "^2.0.1"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+perf-marks@^1.13.4:
+  version "1.13.4"
+  resolved "https://registry.yarnpkg.com/perf-marks/-/perf-marks-1.13.4.tgz#d9b311ca08502423382e93b27e106d75e4904352"
+  integrity sha512-kUh3obyuYDcLfeHRgFfG1Gi/Ni/qNBKvYQ5ct/vWMidFM9FQg1/zQ3eKU3YNZt881jf0Ozw4B9FYGZX9lb4jPQ==
+  dependencies:
+    tslib "^2.0.1"
 
 performance-now@^2.1.0:
   version "2.1.0"
@@ -8278,7 +8298,7 @@ ts-pnp@^1.1.6:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
-tslib@2.0.1, tslib@^2.0.0:
+tslib@2.0.1, tslib@^2.0.0, tslib@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
   integrity sha512-SgIkNheinmEBgx1IUNirK0TUD4X9yjjBRTqqjggWCU3pUEqIk3/Uwl3yRixYKT6WjQuGiwDv4NomL3wqRCj+CQ==

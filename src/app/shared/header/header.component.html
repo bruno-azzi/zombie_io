@@ -1,1 +1,17 @@
-<header>header</header>
+<header data-component="header">
+  <div class="container">
+    <h1 class="logo-wrapper">
+      <a [routerLink]="['/']" class="logo-link">
+        <img class="logo" src="../../../assets/img/logo.png" alt="Zombie.io Logo" title="Zombie.io">
+      </a>
+    </h1>
+
+    <nav class="navigation">
+      <ul class="menu-list">
+        <li class="menu-item" *ngFor="let item of nav">
+          <a class="menu-link" [routerLink]="item.url" routerLinkActive="active">{{ item.name }}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

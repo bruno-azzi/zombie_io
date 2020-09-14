@@ -1,0 +1,31 @@
+<div data-component="input" [class.error]="formControl.dirty && formControl.touched && formControl.invalid">
+  <label class="label" [for]="id">{{ label }}</label>
+
+  <div class="input-wrapper">
+    <input
+      class="input-field"
+      [type]="type"
+      [id]="id"
+      [name]="id"
+      [maxlength]="maxlength"
+      [formControl]="formControl"
+      [placeholder]="placeholder"
+    >
+
+    <!-- <app-button
+      *ngIf="searchBtn"
+      icon="search"
+      (clickOutput)="onChange(formControl.value)"
+    >
+    </app-button> -->
+  </div>
+
+  <div class="errors" *ngIf="formControl.errors">
+    <label
+      [hidden]="!(formControl.errors[item.error] && formControl.dirty && formControl.touched && formControl.invalid)"
+      *ngFor="let item of errorMessages"
+    >
+      {{ item.message }}
+    </label>
+  </div>
+</div>

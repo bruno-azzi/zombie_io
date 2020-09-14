@@ -1,0 +1,25 @@
+@import 'base/imports';
+
+[data-component='section-title'] {
+  padding: 0 0 12px;
+  margin: 0 0 30px;
+  border-bottom: 1px solid $main-green;
+  display: flex;
+  align-items: center;
+
+  .title {
+    font-size: 40px;
+    color: $main-green;
+    font-weight: 600;
+    margin-right: 30px;
+  }
+
+  .total {
+    border-left: 1px solid $main-green;
+    padding-left: 25px;
+    font-size: 18px;
+    color: $main-green;
+    font-weight: 600;
+  }
+
+}

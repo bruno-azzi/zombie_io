@@ -1,0 +1,57 @@
+@import 'base/imports';
+
+[data-component='header'] {
+  padding: 16px 0;
+  margin: 0 0 30px;
+  background-color: $dark-grey;
+  height: 82px;
+
+  .logo {
+    max-width: 210px;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navigation {
+    .menu-list {
+      display: flex;
+
+      .menu-link {
+        padding: 12px 0;
+        margin: 0 12px;
+        transition: 250ms ease;
+        position: relative;
+        font-size: 18px;
+        font-weight: 400;
+
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: 5px;
+          right: 0;
+          width: 0;
+          height: 2px;
+          background-color: $main-green;
+          transition: 250ms ease;
+        }
+
+        &:hover {
+          color: $main-green;
+        }
+
+        &.active {
+          color: $main-green;
+
+          &:before {
+            width: 100%;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+}

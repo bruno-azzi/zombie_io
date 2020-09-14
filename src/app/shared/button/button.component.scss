@@ -1,0 +1,34 @@
+@import 'base/imports';
+
+[data-component='button'] {
+  padding: 16px;
+  color: $dark-grey;
+  border: 0;
+  border-radius: 8px;
+  background-color: $main-green;
+  font-weight: 600;
+  box-shadow: 0 0 15px 0 transparent;
+  transition: 300ms ease;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    box-shadow: 0 0 15px 0 rgba($color: $main-green, $alpha: 1);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  span + span {
+    margin-left: 10px;
+  }
+
+  .material-icons {
+    color: $black;
+    font-size: 30px;
+  }
+
+}
