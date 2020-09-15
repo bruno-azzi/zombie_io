@@ -1,22 +1,39 @@
 <div data-component="create-edit-survivor">
-  <h2 class="title">Bruno Azzi</h2>
+  <app-section-title title="Add new survivor"></app-section-title>
 
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
     <div class="row">
       <div class="form-control col-md-4">
-        <label for="name">Name</label>
-        <input type="text" id="name">
+        <app-input
+          label="Name"
+          id="name"
+          placeholder="Insert your name"
+          [formControl]="form.get('name')"
+          maxlength="100"
+        >
+        </app-input>
       </div>
 
       <div class="form-control col-md-4">
-        <label for="age">Age</label>
-        <input type="number" id="age">
+        <app-input
+          label="Age"
+          id="age"
+          placeholder="Insert your age"
+          [formControl]="form.get('age')"
+          maxlength="3"
+        >
+        </app-input>
       </div>
 
       <div class="form-control col-md-4">
         <label for="gender">Gender</label>
         <input type="radio" id="M">
         <input type="radio" id="F">
+      </div>
+
+      <div class="col-md-12">
+        <app-map [formControl]="form.get('lonlat')">
+        </app-map>
       </div>
     </div>
   </form>

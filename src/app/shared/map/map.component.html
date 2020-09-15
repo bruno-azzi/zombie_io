@@ -1,0 +1,28 @@
+<div data-component="map">
+  <app-input
+    *ngIf="!showMap"
+    label="Latitude and Longitude"
+    placeholder="Latitude and Longitude"
+    [formControl]="formControl"
+  >
+  </app-input>
+
+  <app-input
+    #search
+    *ngIf="showMap"
+    label="Location"
+    placeholder="Search for a location"
+  >
+  </app-input>
+
+  <agm-map [latitude]="lat" [longitude]="lon" [zoom]="zoom" [styles]="theme" *ngIf="showMap">
+    <agm-marker
+      class="marker"
+      [latitude]="lat"
+      [longitude]="lon"
+      (dragEnd)="onDragEnd($event)"
+      [markerDraggable]="true"
+    >
+    </agm-marker>
+  </agm-map>
+</div>

@@ -31,25 +31,29 @@ export class HeaderComponent implements OnInit {
   }
 
   openMenu(): void {
-    this.menuOpened = true;
-    this.tl.clear();
+    if (window.innerWidth < 768) {
+      this.menuOpened = true;
+      this.tl.clear();
 
-    gsap.set('body, html', { overflow: 'hidden' });
+      gsap.set('body, html', { overflow: 'hidden' });
 
-    this.tl
-      .to('[data-component="header"] .menu-list', { duration: .8, x: 0, ease: Power4.easeOut }, 0)
-      .to('[data-component="header"] .menu-item', { duration: .8, x: 0, ease: Power4.easeOut, stagger: .2 }, 0);
+      this.tl
+        .to('[data-component="header"] .menu-list', { duration: .8, x: 0, ease: Power4.easeOut }, 0)
+        .to('[data-component="header"] .menu-item', { duration: .8, x: 0, ease: Power4.easeOut, stagger: .2 }, 0);
+    }
   }
 
   closeMenu(): void {
-    this.menuOpened = false;
-    this.tl.clear();
+    if (window.innerWidth < 768) {
+      this.menuOpened = false;
+      this.tl.clear();
 
-    this.tl
-      .to('[data-component="header"] .menu-list', { duration: .8, x: '-150%', ease: Power4.easeOut }, 0)
-      .set('[data-component="header"] .menu-item', { x: '-150%' }, -.4);
+      this.tl
+        .to('[data-component="header"] .menu-list', { duration: .8, x: '-150%', ease: Power4.easeOut }, 0)
+        .set('[data-component="header"] .menu-item', { x: '-150%' }, -.4);
 
-    gsap.set('body, html', { overflow: '' });
+      gsap.set('body, html', { overflow: '' });
+    }
   }
 
 }

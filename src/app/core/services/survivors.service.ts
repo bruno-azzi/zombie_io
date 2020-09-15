@@ -32,4 +32,11 @@ export class SurvivorsService {
     }));
   }
 
+  getById(id: string): Observable<Survivor> {
+    return this.http.get(`${environment.apiUrl}/people/${id}.json`).pipe(map((data: Survivor) => {
+      const survivor = data;
+      return survivor;
+    }));
+  }
+
 }

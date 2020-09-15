@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://zssn-backend-example.herokuapp.com/api'
+  apiUrl: 'https://zssn-backend-example.herokuapp.com/api',
+  mapApiKey: 'AIzaSyCOcLWhsrQIjZR7wPyQVyvNvDkBDRbAt9Y'
 };
 
 /*

@@ -4,6 +4,9 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "types": [
+      "googlemaps"
+    ],
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -11,6 +14,8 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "module": "es2020",
     "lib": [
       "es2018",

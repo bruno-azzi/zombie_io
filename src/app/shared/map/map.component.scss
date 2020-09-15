@@ -1,0 +1,18 @@
+@import 'base/imports';
+
+[data-component='map'] {
+
+  agm-map {
+    height: 300px;
+
+    @include sm {
+      height: 500px;
+    }
+  }
+
+  .form-control {
+    color: $dark-grey;
+  }
+
+}
+

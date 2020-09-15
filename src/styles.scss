@@ -54,7 +54,7 @@ html {
   box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: .5);
 
   @include sm {
-    padding: 16px 24px;
+    padding: 16px 24px 24px;
     border-radius: 12px;
   }
 }
@@ -64,5 +64,47 @@ ngx-skeleton-loader {
 
   .loader {
     background-color: $medium-grey !important;
+  }
+}
+
+.pac-container {
+  background-color: $medium-grey;
+  border: 1px solid $green;
+  transform: translateY(2px);
+  border-radius: 8px;
+
+  .pac-item {
+    cursor: pointer;
+    border-top: 1px solid $light-grey;
+
+    @include sm {
+      font-size: 16px;
+    }
+
+    span {
+      color: rgba($color: $white, $alpha: .5);
+    }
+
+    .pac-icon-marker {
+      color: $green;
+    }
+
+    .pac-item-query {
+      color: $green;
+      font-weight: 300;
+
+      @include sm {
+        font-size: 16px;
+      }
+
+      .pac-matched {
+        font-weight: 900;
+        color: $green;
+      }
+    }
+
+    &:hover {
+      background-color: $medium-grey;
+    }
   }
 }

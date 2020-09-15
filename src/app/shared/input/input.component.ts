@@ -1,5 +1,5 @@
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Component, EventEmitter, forwardRef, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -22,9 +22,12 @@ export class InputComponent implements OnInit {
   @Input() label: string;
   @Input() placeholder: string;
   @Input() maxlength: number;
-  @Input() formControl: FormControl;
+  @Input() formControl = new FormControl();
   // @Input() searchBtn: boolean;
   @Input() errorMessages;
+
+  @ViewChild('input')
+  public searchElementRef: ElementRef;
 
   @Output() inputChanged = new EventEmitter();
 
