@@ -1,16 +1,24 @@
 @import 'base/imports';
 
 [data-component='input'] {
-  margin: 0 0 24px;
+  margin: 0 0 16px;
+
+  @include sm {
+    margin: 0 0 24px;
+  }
 
   .label {
-    color: $main-green;
+    color: $green;
     margin: 0 0 8px;
-    font-size: 18px;
+    font-size: 16px;
+
+    @include sm {
+      font-size: 18px;
+    }
   }
 
   .input-wrapper {
-    border: 1px solid $main-green;
+    border: 1px solid $green;
     border-radius: 8px;
     overflow: hidden;
     background-color: $medium-grey;
@@ -19,12 +27,16 @@
 
     .input-field {
       padding: 16px;
-      font-size: 18px;
+      font-size: 16px;
       width: 100%;
       background-color: transparent;
       border: 0;
       border-radius: 8px;
-      color: $main-green;
+      color: $green;
+
+      @include sm {
+        font-size: 18px;
+      }
 
       &::placeholder {
         color: rgba($color: $white, $alpha: .4);

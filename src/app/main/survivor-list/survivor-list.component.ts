@@ -18,6 +18,7 @@ export class SurvivorListComponent implements OnInit {
   page = 1;
   maxSize = window.innerWidth >= 768 ? 7 : 5;
   fakeCardList = [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ];
+  itemsPerPage = window.innerWidth >= 768 ? 24 : 12;
 
   constructor(private service: SurvivorsService) { }
 

@@ -3,23 +3,31 @@
 [data-component='section-title'] {
   padding: 0 0 12px;
   margin: 0 0 30px;
-  border-bottom: 1px solid $main-green;
+  border-bottom: 1px solid $green;
   display: flex;
   align-items: center;
 
   .title {
-    font-size: 40px;
-    color: $main-green;
+    font-size: 24px;
+    color: $green;
     font-weight: 600;
     margin-right: 30px;
+
+    @include sm {
+      font-size: 40px;
+    }
   }
 
   .total {
-    border-left: 1px solid $main-green;
+    border-left: 1px solid $green;
     padding-left: 25px;
-    font-size: 18px;
-    color: $main-green;
+    font-size: 15px;
+    color: $green;
     font-weight: 600;
+
+    @include sm {
+      font-size: 18px;
+    }
   }
 
 }

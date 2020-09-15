@@ -13,7 +13,7 @@ html {
 
   body {
     height: 100%;
-    background-color: $medium-grey;
+    background-color: $light-grey;
 
     * {
       margin: 0;
@@ -23,6 +23,10 @@ html {
       outline: none;
       color: $white;
       font-family: $main-font;
+
+      &:focus {
+        outline: none;
+      }
     }
 
     a {
@@ -32,17 +36,27 @@ html {
     }
 
     main {
-      min-height: calc(100% - 226px);
+      min-height: calc(100% - 192);
+
+      @include sm {
+        min-height: calc(100% - 226px);
+      }
     }
   }
 }
 
 .main-content {
-  border-radius: 12px;
-  background-color: $dark-grey;
-  padding: 16px 24px;
+  border-radius: 8px;
+  background-color: $medium-grey;
+  padding: 16px;
   position: relative;
   min-height: 450px;
+  box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: .5);
+
+  @include sm {
+    padding: 16px 24px;
+    border-radius: 12px;
+  }
 }
 
 ngx-skeleton-loader {

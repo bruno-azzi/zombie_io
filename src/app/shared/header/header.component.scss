@@ -1,13 +1,25 @@
 @import 'base/imports';
 
 [data-component='header'] {
-  padding: 16px 0;
-  margin: 0 0 30px;
-  background-color: $dark-grey;
-  height: 82px;
+  padding: 6px 0;
+  margin: 0 0 12px;
+  background-color: $medium-grey;
+  box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: .5);
+
+  @include sm {
+    height: 82px;
+    padding: 16px 0;
+    margin: 0 0 30px;
+  }
 
   .logo {
-    max-width: 210px;
+    max-width: 150px;
+    margin: 0 8px;
+
+    @include sm {
+      max-width: 210px;
+      margin: 0 12px;
+    }
   }
 
   .container {
@@ -17,40 +29,103 @@
   }
 
   .navigation {
+    display: flex;
+    position: relative;
+
     .menu-list {
       display: flex;
+      flex-direction: column;
+      padding: 60px 8px;
+      position: fixed;
+      top: 48px;
+      left: 0;
+      transform: translateX(-100%);
+      width: 100%;
+      height: 100%;
+      z-index: 999;
+      background-color: $medium-grey;
 
-      .menu-link {
-        padding: 12px 0;
-        margin: 0 12px;
-        transition: 250ms ease;
+      @include sm {
+        padding: 0;
+        position: static;
+        transform: translateX(0);
+        flex-direction: row;
+      }
+
+      .menu-item {
+        margin: 0 0 50px;
+        transform: translateX(-150%);
         position: relative;
-        font-size: 18px;
-        font-weight: 400;
+        left: 0;
 
-        &:before {
-          content: '';
-          position: absolute;
-          bottom: 5px;
-          right: 0;
-          width: 0;
-          height: 2px;
-          background-color: $main-green;
-          transition: 250ms ease;
+        @include sm {
+          margin: 0;
+          transform: translateX(0);
         }
 
-        &:hover {
-          color: $main-green;
+        .menu-link {
+          padding: 12px 0;
+          margin: 0 12px;
+          transition: 250ms ease;
+          position: relative;
+          font-size: 24px;
+          font-weight: 400;
+
+          @include sm {
+            font-size: 18px;
+          }
+
+          &:before {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: $green;
+            transition: 250ms ease;
+          }
+
+          &:hover {
+            color: $green;
+          }
         }
 
         &.active {
-          color: $main-green;
+          margin: 0 0 60px;
 
-          &:before {
-            width: 100%;
-            left: 0;
+          @include sm {
+            margin: 0;
+          }
+
+          .menu-link {
+            color: $green;
+
+            &:before {
+              width: 100%;
+              left: 0;
+            }
           }
         }
+      }
+    }
+
+    .menu-btn {
+      cursor: pointer;
+      border: 0;
+      background: transparent;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include sm {
+        display: none;
+      }
+
+      .material-icons {
+        font-size: 30px;
       }
     }
   }

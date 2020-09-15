@@ -2,11 +2,12 @@
 
 [data-component='footer'] {
   margin: 30px 0 0;
-  background-color: $dark-grey;
+  background-color: $medium-grey;
   padding: 30px 0;
   text-align: center;
+  box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: .5);
 
   p {
-    color: $main-green;
+    color: $green;
   }
 }

@@ -5,7 +5,7 @@
   color: $dark-grey;
   border: 0;
   border-radius: 8px;
-  background-color: $main-green;
+  background-color: $green;
   font-weight: 600;
   box-shadow: 0 0 15px 0 transparent;
   transition: 300ms ease;
@@ -15,7 +15,7 @@
   justify-content: center;
 
   &:hover {
-    box-shadow: 0 0 15px 0 rgba($color: $main-green, $alpha: 1);
+    box-shadow: 0 0 15px 0 rgba($color: $green, $alpha: 1);
   }
 
   &:focus {
