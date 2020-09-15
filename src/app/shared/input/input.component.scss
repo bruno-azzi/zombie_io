@@ -7,16 +7,6 @@
     margin: 0 0 24px;
   }
 
-  .label {
-    color: $green;
-    margin: 0 0 8px;
-    font-size: 16px;
-
-    @include sm {
-      font-size: 18px;
-    }
-  }
-
   .input-wrapper {
     border: 1px solid $green;
     border-radius: 8px;
@@ -57,21 +47,8 @@
   }
 
   &.error {
-    .label {
-      color: $red;
-    }
-
     .input-wrapper {
       border-color: $red;
-
-      .input-field {
-        color: $red;
-        caret-color: $red;
-
-        &::placeholder {
-          color: $red;
-        }
-      }
     }
   }
 }

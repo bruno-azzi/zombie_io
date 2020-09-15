@@ -1,8 +1,9 @@
-import { InputComponent } from './../input/input.component';
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Component, forwardRef, Input, NgZone, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 
 import { MapsAPILoader } from '@agm/core';
+
+import { InputComponent } from './../input/input.component';
 
 @Component({
   selector: 'app-map',
@@ -59,7 +60,6 @@ export class MapComponent implements OnInit {
   lon: number;
   lat: number;
   zoom = 15;
-  geoCoder;
   showMap = true;
 
   constructor(
@@ -75,8 +75,6 @@ export class MapComponent implements OnInit {
     // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
-      this.geoCoder = new google.maps.Geocoder();
-
       const autocomplete = new google.maps.places.Autocomplete(this.inputRef.searchElementRef.nativeElement);
 
       autocomplete.addListener('place_changed', () => {
@@ -123,6 +121,7 @@ export class MapComponent implements OnInit {
     this.lon = lon;
     this.lat = lat;
     this.formControl.patchValue(`${lat} ${lon}`);
+    // const feevale = new google.maps.LatLng(casa.lat() + 0.0899, casa.lng());
   }
 
   writeValue(): void {}

@@ -1,5 +1,5 @@
 <div data-component="input" [class.error]="formControl.dirty && formControl.touched && formControl.invalid">
-  <label class="label" [for]="id">{{ label }}</label>
+  <label class="input-label" [for]="id" [class.error]="formControl.dirty && formControl.touched && formControl.invalid">{{ label }}</label>
 
   <div class="input-wrapper">
     <input
@@ -11,6 +11,7 @@
       [maxlength]="maxlength"
       [formControl]="formControl"
       [placeholder]="placeholder"
+      [class.error]="formControl.dirty && formControl.touched && formControl.invalid"
     >
 
     <!-- <app-button
@@ -23,6 +24,7 @@
 
   <div class="errors" *ngIf="formControl.errors">
     <label
+      class="error-label"
       [hidden]="!(formControl.errors[item.error] && formControl.dirty && formControl.touched && formControl.invalid)"
       *ngFor="let item of errorMessages"
     >

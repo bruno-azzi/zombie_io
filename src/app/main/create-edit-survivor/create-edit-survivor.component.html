@@ -10,30 +10,34 @@
           placeholder="Insert your name"
           [formControl]="form.get('name')"
           maxlength="100"
+          [errorMessages]="errorMessages.name"
         >
         </app-input>
       </div>
 
-      <div class="form-control col-md-4">
+      <div class="form-control col-md-2">
         <app-input
           label="Age"
           id="age"
           placeholder="Insert your age"
           [formControl]="form.get('age')"
           maxlength="3"
+          [errorMessages]="errorMessages.age"
         >
         </app-input>
       </div>
 
-      <div class="form-control col-md-4">
-        <label for="gender">Gender</label>
-        <input type="radio" id="M">
-        <input type="radio" id="F">
+      <div class="form-control col-auto">
+        <app-condition-toggle
+          label="Gender"
+          [options]="genderOptions"
+          [control]="form.get('gender')"
+        >
+        </app-condition-toggle>
       </div>
 
       <div class="col-md-12">
-        <app-map [formControl]="form.get('lonlat')">
-        </app-map>
+        <app-map [formControl]="form.get('lonlat')"></app-map>
       </div>
     </div>
   </form>

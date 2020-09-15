@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { ButtonComponent } from './button/button.component';
 import { FooterComponent } from './footer/footer.component';
 import { SectionTitleComponent } from './section-title/section-title.component';
+import { ConditionToggleComponent } from './condition-toggle/condition-toggle.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SectionTitleComponent } from './section-title/section-title.component';
     HeaderComponent,
     FooterComponent,
     ButtonComponent,
-    SectionTitleComponent
+    SectionTitleComponent,
+    ConditionToggleComponent
   ],
   exports: [
     MapComponent,
@@ -28,14 +30,15 @@ import { SectionTitleComponent } from './section-title/section-title.component';
     HeaderComponent,
     FooterComponent,
     ButtonComponent,
-    SectionTitleComponent
+    SectionTitleComponent,
+    ConditionToggleComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     AgmCoreModule.forRoot({
       apiKey: environment.mapApiKey,
-      libraries: ['places']
+      libraries: ['places', 'geometry']
     }),
     ReactiveFormsModule
   ]

@@ -13,6 +13,31 @@ export class CreateEditSurvivorComponent implements OnInit {
 
   form: FormGroup;
   survivorId: string;
+  genderOptions = {
+    left: {
+      label: 'Male',
+      value: 'M'
+    },
+    right: {
+      label: 'Female',
+      value: 'F'
+    }
+  };
+
+  errorMessages = {
+    name: [
+      {
+        error: 'required',
+        message: 'This field is required'
+      },
+    ],
+    age: [
+      {
+        error: 'required',
+        message: 'This field is required'
+      },
+    ]
+  };
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +58,7 @@ export class CreateEditSurvivorComponent implements OnInit {
     this.form = this.fb.group({
       name: [null, Validators.required],
       age: [null, Validators.required],
-      gender: [null, Validators.required],
+      gender: ['M', Validators.required],
       lonlat: [null],
       items: [null, Validators.required],
       water: [0, Validators.required],

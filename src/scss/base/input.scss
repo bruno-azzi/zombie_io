@@ -1,0 +1,32 @@
+@import './imports';
+
+.input-label {
+  color: $green;
+  margin: 0 0 8px;
+  font-size: 16px;
+
+  @include sm {
+    font-size: 18px;
+  }
+
+  &.error {
+    color: $red;
+  }
+}
+
+.input-field {
+  &.error {
+    color: $red;
+    caret-color: $red;
+
+    &::placeholder {
+      color: $red;
+    }
+  }
+}
+
+.error-label {
+  font-size: 14px;
+  margin: 5px 0 0;
+  color: $red;
+}

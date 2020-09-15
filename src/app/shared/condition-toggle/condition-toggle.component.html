@@ -1,0 +1,24 @@
+<div data-component="condition-toggle">
+
+  <label class="input-label" *ngIf="label">{{ label }}</label>
+
+  <div class="group">
+    <button
+      class="condition-btn"
+      (click)="onSelect(options.left.value)"
+      type="button"
+      [class.active]="control.value === options.left.value"
+    >
+      {{ options.left.label }}
+    </button>
+
+    <button
+      class="condition-btn"
+      (click)="onSelect(options.right.value)"
+      type="button"
+      [class.active]="control.value === options.right.value"
+    >
+      {{ options.right.label }}
+    </button>
+  </div>
+</div>

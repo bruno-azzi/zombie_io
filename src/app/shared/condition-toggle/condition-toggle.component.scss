@@ -1,0 +1,45 @@
+@import 'base/imports';
+
+[data-component='condition-toggle'] {
+  margin: 0 0 16px;
+
+  @include sm {
+    margin: 0 0 24px;
+  }
+
+  .group {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .condition-btn {
+    border: 1px solid $green;
+    color: $green;
+    border-radius: 8px;
+    padding: 13px 10px;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 16px;
+    flex: 1;
+    min-width: 90px;
+
+    @include sm {
+      padding: 16px 10px;
+      font-size: 18px;
+    }
+
+    &.active {
+      background-color: $green;
+      color: $dark-grey;
+    }
+
+    &:first-child {
+      border-radius: 8px 0 0 8px;
+    }
+
+    &:last-child {
+      border-radius: 0 8px 8px 0;
+    }
+  }
+
+}
