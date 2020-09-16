@@ -40,7 +40,12 @@
       </div>
 
       <div class="col-md-12">
-        <app-section-title title="Inventory" [small]="true"></app-section-title>
+        <app-section-title
+          title="Inventory"
+          [small]="true"
+          [complement]="isEditPage() ? 'Not editable' : ''"
+        >
+        </app-section-title>
         <app-inventory
           [form]="form.get('items')"
         >
@@ -58,11 +63,20 @@
       </div>
     </div>
 
-    <app-button
-      title="Save"
-      type="submit"
-      [disabled]="form.invalid || loading"
-    >
-    </app-button>
+    <div class="btn-wrapper">
+      <app-button
+        title="Back"
+        url="/survivors"
+        secondary="true"
+      >
+      </app-button>
+
+      <app-button
+        title="Save"
+        type="submit"
+        [disabled]="form.invalid || loading"
+      >
+      </app-button>
+    </div>
   </form>
 </div>

@@ -3,11 +3,23 @@
     class="btn"
     (click)="clickOutput.emit()"
     [type]="type"
-    [disabled]="disabled || loading"
+    [disabled]="disabled"
+    [class.secondary]="secondary"
+    *ngIf="!url"
   >
     <span *ngIf="title">{{ title }}</span>
     <span class="material-icons" *ngIf="icon">{{ icon }}</span>
   </button>
+
+  <a
+    class="btn"
+    *ngIf="url"
+    [routerLink]="url"
+    [class.secondary]="secondary"
+  >
+    <span *ngIf="title">{{ title }}</span>
+    <span class="material-icons" *ngIf="icon">{{ icon }}</span>
+  </a>
 
   <div class="tooltip" *ngIf="tooltip">
     <div class="tooltip-text">{{ tooltip }}</div>

@@ -23,6 +23,10 @@
       color: $red;
     }
   }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 .error-label {

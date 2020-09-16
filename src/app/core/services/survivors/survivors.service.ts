@@ -3,10 +3,10 @@ import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ApiItem, Survivor } from '../types/survivor.types';
-import { environment } from './../../../environments/environment';
+import { ApiItem, Survivor } from '../../types/survivor.types';
+import { environment } from '../../../../environments/environment';
 import { SurvivorPayload, Inventory } from 'src/app/core/types/survivor.types';
-import { LonLatFormatter } from '../utils/lonlat-formatter';
+import { LonLatFormatter } from '../../utils/lonlat-formatter';
 
 @Injectable({
   providedIn: 'root'

@@ -1,0 +1,30 @@
+@import './imports';
+
+.toast-container {
+
+  .ngx-toastr {
+    border-radius: 4px;
+    box-shadow: none;
+    padding: 10px 15px 10px 55px;
+    width: 300px;
+
+    @include sm {
+      width: auto;
+      min-width: 300px;
+      max-width: 420px;
+    }
+
+    &.toast-error {
+      background-color: $red;
+    }
+
+    &.toast-success {
+      background-color: $green;
+    }
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+
+}

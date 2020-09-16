@@ -12,7 +12,7 @@
   "private": true,
   "dependencies": {
     "@agm/core": "^3.0.0-beta.0",
-    "@angular/animations": "~10.1.1",
+    "@angular/animations": "^10.1.1",
     "@angular/common": "~10.1.1",
     "@angular/compiler": "~10.1.1",
     "@angular/core": "~10.1.1",
@@ -25,6 +25,7 @@
     "ngx-mask": "^10.0.1",
     "ngx-pagination": "^5.0.0",
     "ngx-skeleton-loader": "^2.4.4",
+    "ngx-toastr": "^13.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

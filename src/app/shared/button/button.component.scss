@@ -46,6 +46,15 @@ app-button {
       opacity: .1;
       cursor: not-allowed;
     }
+
+    &.secondary {
+      background-color: transparent;
+      border: 1px solid $green;
+
+      span {
+        color: $green;
+      }
+    }
   }
 
   .tooltip {

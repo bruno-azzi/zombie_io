@@ -14,6 +14,7 @@
     background-color: $light-grey;
     display: flex;
     align-items: center;
+    position: relative;
 
     .input-field {
       padding: 16px;
@@ -36,6 +37,10 @@
       &.disabled {
         cursor: not-allowed;
       }
+
+      &.icon-padding {
+        padding-left: 60px;
+      }
     }
 
     [data-component='button'] {
@@ -48,6 +53,14 @@
         font-size: 24px;
       }
     }
+  }
+
+  .material-icons {
+    transform: scaleX(-1);
+    color: $green;
+    position: absolute;
+    left: 16px;
+    font-size: 30px;
   }
 
   &.error {

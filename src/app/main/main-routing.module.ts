@@ -19,7 +19,7 @@ const routes: Routes = [
     component: CreateEditSurvivorComponent
   },
   {
-    path: 'survivor/:id',
+    path: 'survivors/:id',
     component: CreateEditSurvivorComponent
   },
   {

@@ -1,0 +1,28 @@
+@import './imports';
+
+.btn-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  @include large-mobile {
+    flex-direction: row;
+  }
+
+  app-button {
+    [data-component='button'] {
+      width: 100%;
+
+      @include large-mobile {
+        width: auto;
+      }
+    }
+
+    &:last-child {
+      [data-component='button'] {
+        @include large-mobile {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}

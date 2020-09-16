@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { Survivor } from './../../core/types/survivor.types';
-import { SurvivorsService } from './../../core/services/survivors.service';
+import { SurvivorsService } from '../../core/services/survivors/survivors.service';
 
 @Component({
   selector: 'app-survivor-list',

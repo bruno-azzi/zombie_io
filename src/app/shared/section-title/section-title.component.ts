@@ -10,6 +10,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 export class SectionTitleComponent implements OnInit {
 
   @Input() title: string;
+  @Input() complement: string;
   @Input() total: number;
   @Input() small = false;
 

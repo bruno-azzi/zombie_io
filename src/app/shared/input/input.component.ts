@@ -24,7 +24,7 @@ export class InputComponent implements OnInit {
   @Input() maxlength: number;
   @Input() inputMask: string;
   @Input() formControl = new FormControl();
-  // @Input() searchBtn: boolean;
+  @Input() icon: string;
   @Input() errorMessages;
 
   @ViewChild('input')

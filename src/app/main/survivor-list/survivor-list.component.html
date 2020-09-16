@@ -27,7 +27,7 @@
 
   <div class="row" *ngIf="!loading">
     <div class="card-column col-sm-6 col-md-4 col-xl-3" *ngFor="let survivor of filteredSurvivors | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
-      <a [routerLink]="['/survivor', survivor.id]">
+      <a [routerLink]="['/survivors', survivor.id]">
         <div class="card">
           <div class="picture-wrapper">
             <span class="initials">{{ survivor.initialLetters }}</span>

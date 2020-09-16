@@ -1,4 +1,5 @@
 <div data-component="section-title" [class.small]="small">
   <h2 class="title">{{ title }}</h2>
-  <span class="total" *ngIf="total >= 0">Total: {{ total }}</span>
+  <span class="complement" *ngIf="total >= 0">Total: {{ total }}</span>
+  <span class="complement" *ngIf="total !== 0 && complement">{{ complement }}</span>
 </div>

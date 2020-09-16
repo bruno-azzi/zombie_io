@@ -9,6 +9,8 @@
   </label>
 
   <div class="input-wrapper">
+    <span class="material-icons">{{ icon }}</span>
+
     <input
       #input
       class="input-field"
@@ -20,16 +22,10 @@
       [formControl]="formControl"
       [placeholder]="placeholder"
       [class.error]="formControl.dirty && formControl.touched && formControl.invalid"
+      [class.icon-padding]="icon"
       (change)="inputChanged.emit($event.target.value)"
       (keydown.enter)="$event.preventDefault()"
     >
-
-    <!-- <app-button
-      *ngIf="searchBtn"
-      icon="search"
-      (clickOutput)="onChange(formControl.value)"
-    >
-    </app-button> -->
   </div>
 
   <div class="errors" *ngIf="formControl.errors">

@@ -4,7 +4,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LonLatFormatter } from 'src/app/core/utils/lonlat-formatter';
-import { SurvivorsService } from './../../core/services/survivors.service';
+import { AlertService } from '../../core/services/alert/alert.service';
+import { SurvivorsService } from '../../core/services/survivors/survivors.service';
 import { Inventory, Survivor, SurvivorPayload } from 'src/app/core/types/survivor.types';
 
 @Component({
@@ -50,6 +51,7 @@ export class CreateEditSurvivorComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private alert: AlertService,
     private route: ActivatedRoute,
     private service: SurvivorsService
   ) { }
@@ -94,8 +96,7 @@ export class CreateEditSurvivorComponent implements OnInit {
       console.log(this.form.value);
     }, error => {
       this.loading = false;
-      alert('error');
-      console.log('error');
+      this.router.navigate(['/survivors']);
     });
   }
 
@@ -116,9 +117,8 @@ export class CreateEditSurvivorComponent implements OnInit {
       console.log('response', data);
       this.loading = false;
       this.router.navigate(['/survivors']);
+      this.alert.showSuccess('Success', `Survivor ${this.survivor.name} was successfully created.`);
     }, error => {
-      alert('error');
-      console.log(error);
       this.loading = false;
     });
   }
@@ -129,9 +129,8 @@ export class CreateEditSurvivorComponent implements OnInit {
       console.log('response', data);
       this.loading = false;
       this.router.navigate(['/survivors']);
+      this.alert.showSuccess('Success', `Survivor ${this.survivor.name} was successfully edited.`);
     }, error => {
-      alert('error');
-      console.log(error);
       this.loading = false;
     });
   }
