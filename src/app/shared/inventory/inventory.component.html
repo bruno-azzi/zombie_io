@@ -1,0 +1,18 @@
+<div data-component="inventory" [class.disabled]="form.disabled">
+  <div class="item-column" *ngFor="let item of itemList">
+    <label [for]="item.formControlName" class="item">
+      <span class="item-name">{{ item.name }}</span>
+
+      <img class="item-img" [src]="item.img" [alt]="item.name">
+
+      <app-input
+        [id]="item.formControlName"
+        [formControl]="form.get(item.formControlName)"
+        maxlength="4"
+        placeholder="0"
+        inputMask="9999"
+      >
+      </app-input>
+    </label>
+  </div>
+</div>

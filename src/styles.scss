@@ -104,7 +104,15 @@ ngx-skeleton-loader {
     }
 
     &:hover {
-      background-color: $medium-grey;
+      background-color: $light-grey;
+    }
+
+    &.pac-item-selected {
+      background-color: $light-grey;
+
+      &:hover {
+        background-color: $light-grey;
+      }
     }
   }
 }

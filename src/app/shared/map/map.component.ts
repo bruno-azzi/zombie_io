@@ -57,10 +57,23 @@ export class MapComponent implements OnInit {
     }
   ];
 
+  restriction = {
+    latLngBounds: {
+      north: 85.0,
+      south: -85.0,
+      west: -180.0,
+      east: 180.0
+    },
+    strictBounds: true
+  };
+
   lon: number;
   lat: number;
-  zoom = 15;
-  showMap = true;
+  zoom = 12;
+  minZoom = 4;
+  geolocationDisabled = false;
+  geolocationNotSupported = false;
+  tooltipText: string;
 
   constructor(
     private ngZone: NgZone,
@@ -68,13 +81,22 @@ export class MapComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.checkIfGeolocationIsEnabled();
     this.initPlacesAutocomplete();
+
+    if (!this.formControl.value) {
+      this.setCurrentLocation();
+    } else {
+      const lat = +this.formControl.value.split(' ')[0];
+      const lon = +this.formControl.value.split(' ')[1];
+
+      this.updateLocation(lon, lat);
+    }
   }
 
   initPlacesAutocomplete() {
     // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
-      this.setCurrentLocation();
       const autocomplete = new google.maps.places.Autocomplete(this.inputRef.searchElementRef.nativeElement);
 
       autocomplete.addListener('place_changed', () => {
@@ -94,34 +116,56 @@ export class MapComponent implements OnInit {
     });
   }
 
-  setCurrentLocation() {
+  checkIfGeolocationIsEnabled() {
     if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(() => {
-        this.showMap = true;
-        navigator.geolocation.getCurrentPosition(position => {
-          this.updateLocation(position.coords.longitude, position.coords.latitude);
-        });
+      navigator.geolocation.getCurrentPosition(() => {
+        this.geolocationDisabled = false;
       }, error => {
-        /** Check if user declined the geolocation popup */
-        if (error.code === error.PERMISSION_DENIED) {
-          this.showMap = false;
+        if (error.PERMISSION_DENIED) {
+          this.geolocationDisabled = true;
+          this.tooltipText = 'You must activate geolocation in your browser!';
         }
       });
     } else {
-      console.log('else')
-      this.showMap = false;
+      this.geolocationNotSupported = false;
+      this.tooltipText = 'Geolocation not supported in this browser!';
+    }
+  }
+
+  setCurrentLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.updateLocation(position.coords.longitude, position.coords.latitude);
+      }, error => {
+        /** Check if user declined the geolocation popup */
+        this.geolocationDisabled = true;
+        this.tooltipText = 'You must activate geolocation in your browser!';
+        this.updateLocation(0, 0);
+        this.zoom = this.minZoom;
+      });
+    } else {
+      this.geolocationNotSupported = false;
+      this.tooltipText = 'Geolocation not supported in this browser!';
+      this.updateLocation(0, 0);
     }
   }
 
   onDragEnd(event) {
-    this.updateLocation(event.latLng.lng(), event.latLng.lat());
+    const lon = event.latLng.lng();
+    const lat = event.latLng.lat();
+
+    if ((lat >= -85.0 && lat <= 85.0) && (lon >= -180.0 && lon <= 180.0)) {
+      this.updateLocation(lon, lat);
+    } else {
+      this.updateLocation(0, 0);
+    }
   }
 
   updateLocation(lon, lat) {
     this.lon = lon;
     this.lat = lat;
     this.formControl.patchValue(`${lat} ${lon}`);
-    // const feevale = new google.maps.LatLng(casa.lat() + 0.0899, casa.lng());
+    console.log('update location', lon, lat);
   }
 
   writeValue(): void {}

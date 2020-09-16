@@ -1,4 +1,15 @@
-<button data-component="button" (click)="clickOutput.emit()">
-  <span *ngIf="title">{{ title }}</span>
-  <span class="material-icons" *ngIf="icon">{{ icon }}</span>
-</button>
+<div data-component="button">
+  <button
+    class="btn"
+    (click)="clickOutput.emit()"
+    [type]="type"
+    [disabled]="disabled || loading"
+  >
+    <span *ngIf="title">{{ title }}</span>
+    <span class="material-icons" *ngIf="icon">{{ icon }}</span>
+  </button>
+
+  <div class="tooltip" *ngIf="tooltip">
+    <div class="tooltip-text">{{ tooltip }}</div>
+  </div>
+</div>

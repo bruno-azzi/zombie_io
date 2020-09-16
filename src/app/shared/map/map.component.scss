@@ -8,10 +8,27 @@
     @include sm {
       height: 500px;
     }
+
+    .agm-map-container-inner {
+      margin: 0 -16px;
+
+      @include sm {
+        margin: 0 -24px;
+      }
+    }
   }
 
   .form-control {
     color: $dark-grey;
+  }
+
+  [data-component='button'] {
+    min-width: auto;
+    margin: 0 0 16px;
+
+    @include md {
+      margin: 35px 0 0;
+    }
   }
 
 }

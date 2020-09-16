@@ -11,6 +11,7 @@ export class SectionTitleComponent implements OnInit {
 
   @Input() title: string;
   @Input() total: number;
+  @Input() small = false;
 
   constructor() { }
 

@@ -1,0 +1,104 @@
+@import 'base/imports';
+
+[data-component='inventory'] {
+  display: flex;
+  margin: 0 -12px 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include sm {
+    flex-wrap: nowrap;
+  }
+
+  .item-column {
+    width: 100%;
+    height: 100px;
+    padding: 0 12px;
+    display: flex;
+    margin: 0 0 24px;
+
+    @include large-mobile {
+      height: 200px;
+      width: 50%;
+    }
+
+    @include sm {
+      margin: 0;
+      width: 100%;
+      max-width: 200px;
+      box-sizing: content-box;
+    }
+  }
+
+  .item {
+    width: 100%;
+    position: relative;
+    background-color: $light-grey;
+    box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: .5);
+    border-radius: 8px;
+    transition: 300ms ease;
+    overflow: hidden;
+    cursor: pointer;
+
+    .item-name {
+      font-weight: 600;
+      color: $dark-grey;
+      background: $green;
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 8px 0 8px 0;
+      box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: .5);
+      position: relative;
+      z-index: 1;
+      font-size: 14px;
+
+      @include sm {
+        font-size: 16px;
+      }
+    }
+
+    .item-img {
+      width: 100%;
+      max-width: 100px;
+      position: absolute;
+      right: 10px;
+      bottom: 0;
+      z-index: 0;
+
+      @include large-mobile {
+        bottom: 10px;
+        right: 0;
+        max-width: 160px;
+      }
+    }
+
+    [data-component='input'] {
+      margin: 0;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 70px;
+      box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: 1);
+
+      .input-field {
+        padding: 4px 10px;
+      }
+    }
+  }
+
+  &:not(.disabled) {
+    .item {
+      &:hover {
+        box-shadow: 0 0 10px 0 rgba($color: $green, $alpha: .5);
+      }
+    }
+  }
+
+  &.disabled {
+    .item {
+      cursor: not-allowed;
+    }
+  }
+
+}
+

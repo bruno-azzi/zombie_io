@@ -2,7 +2,7 @@
 
 [data-component='section-title'] {
   padding: 0 0 12px;
-  margin: 0 0 30px;
+  margin: 0 0 36px;
   border-bottom: 1px solid $green;
   display: flex;
   align-items: center;
@@ -27,6 +27,19 @@
 
     @include sm {
       font-size: 18px;
+    }
+  }
+
+  &.small {
+    padding: 0 0 6px;
+    margin: 12px 0 24px;
+
+    .title {
+      font-size: 20px;
+
+      @include sm {
+        font-size: 26px;
+      }
     }
   }
 

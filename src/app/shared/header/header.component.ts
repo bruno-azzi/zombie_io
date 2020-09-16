@@ -13,8 +13,8 @@ export class HeaderComponent implements OnInit {
 
   nav = [
     { name: 'Global Reports', url: 'home' },
-    { name: 'Survivor list', url: 'survivors' },
-    { name: 'Add', url: 'add' }
+    { name: 'Survivor List', url: 'survivors' },
+    { name: 'New Survivor', url: 'add' }
   ];
 
   menuOpened = false;

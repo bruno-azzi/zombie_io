@@ -11,7 +11,7 @@
     border: 1px solid $green;
     border-radius: 8px;
     overflow: hidden;
-    background-color: $medium-grey;
+    background-color: $light-grey;
     display: flex;
     align-items: center;
 
@@ -31,6 +31,10 @@
       &::placeholder {
         color: rgba($color: $white, $alpha: .4);
         font-style: italic;
+      }
+
+      &.disabled {
+        cursor: not-allowed;
       }
     }
 

@@ -2,25 +2,33 @@
   <div class="row">
     <div class="col-md-6">
       <app-input
-        label="Latitude and Longitude"
-        placeholder="Latitude and Longitude"
-        [formControl]="formControl"
-      >
-      </app-input>
-    </div>
-
-    <div class="col-md-6">
-      <app-input
         #search
-        *ngIf="showMap"
         label="Location"
         placeholder="Search for a location"
       >
       </app-input>
     </div>
+
+    <div class="col-auto">
+      <app-button
+        title="Find me"
+        [tooltip]="tooltipText"
+        [disabled]="geolocationDisabled || geolocationNotSupported"
+        icon="gps_fixed"
+        (clickOutput)="setCurrentLocation()"
+      >
+      </app-button>
+    </div>
   </div>
 
-  <agm-map [latitude]="lat" [longitude]="lon" [zoom]="zoom" [styles]="theme" *ngIf="showMap">
+  <agm-map
+    [latitude]="lat"
+    [longitude]="lon"
+    [zoom]="zoom"
+    [minZoom]="minZoom"
+    [styles]="theme"
+    [restriction]="restriction"
+  >
     <agm-marker
       class="marker"
       [latitude]="lat"

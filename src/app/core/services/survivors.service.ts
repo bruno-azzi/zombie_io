@@ -3,8 +3,10 @@ import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { ApiItem, Survivor } from '../types/survivor.types';
 import { environment } from './../../../environments/environment';
-import { Survivor } from '../types/survivor.types';
+import { SurvivorPayload, Inventory } from 'src/app/core/types/survivor.types';
+import { LonLatFormatter } from '../utils/lonlat-formatter';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +37,47 @@ export class SurvivorsService {
   getById(id: string): Observable<Survivor> {
     return this.http.get(`${environment.apiUrl}/people/${id}.json`).pipe(map((data: Survivor) => {
       const survivor = data;
+
+      survivor.lonlat = LonLatFormatter.parseFromPointFormat(survivor.lonlat);
+
       return survivor;
     }));
+  }
+
+  getSurvivorInventory(id: string) {
+    return this.http.get(`${environment.apiUrl}/people/${id}/properties.json`).pipe(map((data: ApiItem[]) => {
+      const inventory: Inventory = {};
+
+      data.forEach(apiItem => {
+        switch (apiItem.item.name) {
+          case 'Fiji Water':
+            inventory.fijiWater = apiItem.quantity;
+            break;
+
+          case 'Campbell Soup':
+            inventory.campbellSoup = apiItem.quantity;
+            break;
+
+          case 'First Aid Pouch':
+            inventory.firstAid = apiItem.quantity;
+            break;
+
+          default:
+            inventory.ak47 = apiItem.quantity;
+            break;
+        }
+      });
+
+      return inventory;
+    }));
+  }
+
+  createNewSurvivor(payload: SurvivorPayload) {
+    return this.http.post(`${environment.apiUrl}/people.json`, payload);
+  }
+
+  editSurvivor(id: string, payload: SurvivorPayload) {
+    return this.http.patch(`${environment.apiUrl}/people/${id}.json`, payload);
   }
 
 }

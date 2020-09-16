@@ -1,8 +1,10 @@
 <div data-component="create-edit-survivor">
-  <app-section-title title="Add new survivor"></app-section-title>
+  <app-section-title title="Create new survivor"></app-section-title>
+
+  <app-loader *ngIf="loading"></app-loader>
 
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <div class="row">
+    <div class="row form-row">
       <div class="form-control col-md-4">
         <app-input
           label="Name"
@@ -22,6 +24,7 @@
           placeholder="Insert your age"
           [formControl]="form.get('age')"
           maxlength="3"
+          inputMask="999"
           [errorMessages]="errorMessages.age"
         >
         </app-input>
@@ -37,8 +40,29 @@
       </div>
 
       <div class="col-md-12">
-        <app-map [formControl]="form.get('lonlat')"></app-map>
+        <app-section-title title="Inventory" [small]="true"></app-section-title>
+        <app-inventory
+          [form]="form.get('items')"
+        >
+        </app-inventory>
+      </div>
+
+      <div class="col-md-12">
+        <app-section-title title="Location" [small]="true"></app-section-title>
+
+        <app-map
+          *ngIf="!loading"
+          [formControl]="form.get('lonlat')"
+        >
+        </app-map>
       </div>
     </div>
+
+    <app-button
+      title="Save"
+      type="submit"
+      [disabled]="form.invalid || loading"
+    >
+    </app-button>
   </form>
 </div>

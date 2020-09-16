@@ -1,5 +1,12 @@
 <div data-component="input" [class.error]="formControl.dirty && formControl.touched && formControl.invalid">
-  <label class="input-label" [for]="id" [class.error]="formControl.dirty && formControl.touched && formControl.invalid">{{ label }}</label>
+  <label
+    *ngIf="label"
+    class="input-label"
+    [for]="id"
+    [class.error]="formControl.dirty && formControl.touched && formControl.invalid"
+  >
+    {{ label }}
+  </label>
 
   <div class="input-wrapper">
     <input
@@ -8,10 +15,13 @@
       [type]="type"
       [id]="id"
       [name]="id"
+      [mask]="inputMask"
       [maxlength]="maxlength"
       [formControl]="formControl"
       [placeholder]="placeholder"
       [class.error]="formControl.dirty && formControl.touched && formControl.invalid"
+      (change)="inputChanged.emit($event.target.value)"
+      (keydown.enter)="$event.preventDefault()"
     >
 
     <!-- <app-button

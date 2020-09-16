@@ -20,8 +20,9 @@ export class InputComponent implements OnInit {
   @Input() type = 'text';
   @Input() id: string;
   @Input() label: string;
-  @Input() placeholder: string;
+  @Input() placeholder = '';
   @Input() maxlength: number;
+  @Input() inputMask: string;
   @Input() formControl = new FormControl();
   // @Input() searchBtn: boolean;
   @Input() errorMessages;
