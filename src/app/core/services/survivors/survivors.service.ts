@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -92,6 +92,48 @@ export class SurvivorsService {
     return this.http.post(`${environment.apiUrl}/${reporterId}/report_infection.json`, {
       infected: infectedPersonId
     });
+  }
+
+  getGlobalReports() {
+    return forkJoin([
+      this.getAverageOfInfected(),
+      this.getAverageHealthyPeople(),
+      this.getTotalPointsLost(),
+      this.getAverageItemsPerPerson()
+    ]);
+  }
+
+  getAverageOfInfected() {
+    return this.http.get(`${environment.apiUrl}/report/infected.json`).pipe(map((data: any) => {
+      return data.report.average_infected.toFixed(1);
+    }));
+  }
+
+  getAverageHealthyPeople() {
+    return this.http.get(`${environment.apiUrl}/report/non_infected.json`).pipe(map((data: any) => {
+      return data.report.average_healthy.toFixed(1);
+    }));
+  }
+
+  getTotalPointsLost() {
+    return this.http.get(`${environment.apiUrl}/report/infected_points.json`).pipe(map((data: any) => {
+      return data.report.total_points_lost.toFixed(1);
+    }));
+  }
+
+  getAverageItemsPerPerson() {
+    return this.http.get(`${environment.apiUrl}/report/people_inventory.json`).pipe(map((data: any) => {
+      const response = {
+        averageItemsPerHealthyPerson: data.report.average_items_quantity_per_healthy_person.toFixed(1),
+        averageItemsPerPerson: data.report.average_items_quantity_per_person.toFixed(1),
+        ak47: +data.report.average_quantity_of_each_item_per_person['AK47'].toFixed(1),
+        campbellSoup: +data.report.average_quantity_of_each_item_per_person['Campbell Soup'].toFixed(1),
+        fijiWater: +data.report.average_quantity_of_each_item_per_person['Fiji Water'].toFixed(1),
+        firstAid: +data.report.average_quantity_of_each_item_per_person['First Aid Pouch'].toFixed(1)
+      };
+
+      return response;
+    }));
   }
 
 }

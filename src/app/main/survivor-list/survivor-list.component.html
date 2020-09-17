@@ -39,7 +39,7 @@
           </strong>
           <span class="status" [ngClass]="survivor.infected ? 'infected' : 'healthy'">{{ survivor.infected ? 'Infected' : 'Healthy' }}</span>
 
-          <button class="material-icons more-btn">
+          <button class="material-icons more-btn" *ngIf="!survivor.infected">
             more_vert
             <ul class="report-menu">
               <li (click)="flagAsInfected($event, survivor)">Flag as infected</li>

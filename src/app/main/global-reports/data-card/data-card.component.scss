@@ -1,0 +1,40 @@
+@import 'base/imports';
+
+[data-component='data-card'] {
+  border-radius: 8px;
+  background-color: $light-grey;
+  box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: .5);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+
+  @include sm {
+    padding: 20px;
+  }
+
+  .card-title {
+    color: $white-grey;
+    font-size: 14px;
+    margin: 0 0 10px;
+    text-align: center;
+
+    @include sm {
+      font-size: 20px;
+    }
+  }
+
+  .value {
+    color: $green;
+    font-weight: 600;
+    font-size: 20px;
+
+    @include sm {
+      font-size: 24px;
+    }
+  }
+
+}
+

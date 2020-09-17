@@ -1,0 +1,14 @@
+@import 'base/imports';
+
+[data-component='global-reports'] {
+
+  .column {
+    margin-bottom: 16px;
+
+    @include sm {
+      margin-bottom: 24px;
+    }
+  }
+
+}
+

@@ -1,1 +1,47 @@
-<p>global-reports works!</p>
+<div data-component="global-reports">
+  <app-section-title title="Global Reports"></app-section-title>
+
+  <app-loader *ngIf="loading"></app-loader>
+
+  <div class="row justify-content-center">
+    <div class="column col-sm-6 col-md-4">
+      <app-data-card title="Average of infected people" [value]="averageInfected"></app-data-card>
+    </div>
+
+    <div class="column col-sm-6 col-md-4">
+      <app-data-card title="Average of healthy people" [value]="averageHealthy"></app-data-card>
+    </div>
+
+    <div class="column col-sm-6 col-md-4">
+      <app-data-card title="Total points lost" [value]="totalPointsLost"></app-data-card>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="column col-sm-4">
+      <app-data-card title="Average items per person" [value]="averageItems.averageItemsPerPerson"></app-data-card>
+    </div>
+
+    <div class="column col-sm-4">
+      <app-data-card title="Average items per healthy person" [value]="averageItems.averageItemsPerHealthyPerson"></app-data-card>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column col-sm-6 col-lg-3">
+      <app-data-card title="Average of AK-47's per person" [value]="averageItems.ak47"></app-data-card>
+    </div>
+
+    <div class="column col-sm-6 col-lg-3">
+      <app-data-card title="Average of Fiji Waters per person" [value]="averageItems.fijiWater"></app-data-card>
+    </div>
+
+    <div class="column col-sm-6 col-lg-3">
+      <app-data-card title="Average of Campbell Soups per person" [value]="averageItems.campbellSoup"></app-data-card>
+    </div>
+
+    <div class="column col-sm-6 col-lg-3">
+      <app-data-card title="Average of First Aid Pouches per person" [value]="averageItems.firstAid"></app-data-card>
+    </div>
+  </div>
+</div>

@@ -165,7 +165,6 @@ export class MapComponent implements OnInit {
     this.lon = lon;
     this.lat = lat;
     this.formControl.patchValue(`${lat} ${lon}`);
-    console.log('update location', lon, lat);
   }
 
   writeValue(): void {}

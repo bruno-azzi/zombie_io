@@ -82,7 +82,7 @@ export class TradeComponent implements OnInit {
     const secondSurvivor = this.form.get('secondSurvivor').value;
 
     this.filteredSurvivors = this.survivors.filter(item => {
-      return item.id !== firstSurvivor.id && item.id !== secondSurvivor.id;
+      return item.id !== firstSurvivor.id && item.id !== secondSurvivor.id && !survivor.infected;
     });
 
     this.resetOffersAndInventories(type);
