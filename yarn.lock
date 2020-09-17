@@ -5716,6 +5716,11 @@ ngx-pagination@^5.0.0:
   resolved "https://registry.yarnpkg.com/ngx-pagination/-/ngx-pagination-5.0.0.tgz#a4b4c150a70aef17ccd825e4543e174a974bbd14"
   integrity sha512-Ur0pTWRe2ZXoJ8impEzo0IZKxY5aEcQfSmL5uBqW1rHI2J6nfzgZAHsSLagKHFGchXq0PkRlDVVMcIaNxYJwvQ==
 
+ngx-select-dropdown@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/ngx-select-dropdown/-/ngx-select-dropdown-1.4.4.tgz#794a6c073a1cf6d6d2bebb63ee92abb78f651ef4"
+  integrity sha512-202lNdJ+ixIq4quUDZabGVBD9ot8XwgiGQWVWDIpAHRxDjBzaC0nmHYaFRk+8dGbPmGKizcnG+UfjeYj+pvQpg==
+
 ngx-skeleton-loader@^2.4.4:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/ngx-skeleton-loader/-/ngx-skeleton-loader-2.4.4.tgz#39d714b57c236fcd52e51012d54c63824c8c0e15"

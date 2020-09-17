@@ -1,0 +1,102 @@
+@import 'base/imports';
+
+[data-component='dropdown'] {
+
+  .ngx-dropdown-container {
+
+    .ngx-dropdown-button {
+      background-color: $light-grey !important;
+      border: 1px solid $green !important;
+      border-radius: 8px !important;
+      padding: 16px !important;
+
+      .display-text {
+        color: $white-grey;
+        font-size: 16px;
+
+        @include sm {
+          font-size: 18px;
+        }
+      }
+
+      .nsdicon-angle-down {
+        color: $green;
+      }
+
+      .nsdicon-angle-down {
+        &:before {
+          border-width: 2px 2px 0 0 !important;
+          height: 15px !important;
+          width: 15px !important;
+        }
+      }
+    }
+
+    .ngx-dropdown-list-container {
+      background-color: $light-grey !important;
+      border-radius: 8px !important;
+      border: 1px solid $green !important;
+      padding: 16px !important;
+
+      .search-container {
+        label {
+          &.active {
+            transform: translateY(-10px) !important;
+            margin: 0 0 10px;
+          }
+        }
+
+        input {
+          font-size: 16px !important;
+          color: $green !important;
+          caret-color: $green !important;
+          border-color: $green !important;
+
+          &:focus {
+            border-color: $green !important;
+
+            & + label {
+              transform: translateY(-10px) !important;
+              margin: 0 0 10px !important;
+            }
+          }
+        }
+      }
+
+      .selected-items {
+        li {
+          background-color: $green !important;
+          padding: 6px 10px !important;
+
+          span {
+            color: $dark-grey !important;
+            font-weight: 600;
+
+            &.nsdicon-close {
+              display: none;
+            }
+          }
+        }
+
+        & + hr {
+          display: none;
+        }
+      }
+
+      .available-items {
+        li {
+          color: $white-grey !important;
+          padding: 0 !important;
+          margin: 0 0 6px;
+          transition: 250ms ease;
+
+          &:hover {
+            color: $green !important;
+          }
+        }
+      }
+    }
+
+  }
+
+}

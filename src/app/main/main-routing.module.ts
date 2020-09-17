@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { TradeComponent } from './trade/trade.component';
 import { SurvivorListComponent } from './survivor-list/survivor-list.component';
 import { GlobalReportsComponent } from './global-reports/global-reports.component';
 import { CreateEditSurvivorComponent } from './create-edit-survivor/create-edit-survivor.component';
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'survivors',
     component: SurvivorListComponent
+  },
+  {
+    path: 'trade',
+    component: TradeComponent
   },
   {
     path: '**',

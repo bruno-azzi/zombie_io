@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxMaskModule } from 'ngx-mask';
 import { AgmCoreModule } from '@agm/core';
+import { SelectDropDownModule } from 'ngx-select-dropdown';
 
 import { MapComponent } from './map/map.component';
 import { InputComponent } from './input/input.component';
@@ -13,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { ButtonComponent } from './button/button.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
+import { DropdownComponent } from './dropdown/dropdown.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { SectionTitleComponent } from './section-title/section-title.component';
 import { ConditionToggleComponent } from './condition-toggle/condition-toggle.component';
@@ -25,6 +27,7 @@ import { ConditionToggleComponent } from './condition-toggle/condition-toggle.co
     FooterComponent,
     ButtonComponent,
     LoaderComponent,
+    DropdownComponent,
     InventoryComponent,
     SectionTitleComponent,
     ConditionToggleComponent
@@ -36,6 +39,7 @@ import { ConditionToggleComponent } from './condition-toggle/condition-toggle.co
     FooterComponent,
     ButtonComponent,
     LoaderComponent,
+    DropdownComponent,
     InventoryComponent,
     SectionTitleComponent,
     ConditionToggleComponent
@@ -44,6 +48,7 @@ import { ConditionToggleComponent } from './condition-toggle/condition-toggle.co
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    SelectDropDownModule,
     NgxMaskModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: environment.mapApiKey,

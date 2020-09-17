@@ -30,7 +30,7 @@
       }
 
       &::placeholder {
-        color: rgba($color: $white, $alpha: .4);
+        color: $white-grey;
         font-style: italic;
       }
 

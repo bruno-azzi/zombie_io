@@ -13,7 +13,6 @@ app-button {
   .btn {
     width: 100%;
     padding: 16px;
-    border: 0;
     border-radius: 8px;
     background-color: $green;
     font-weight: 600;
@@ -24,6 +23,7 @@ app-button {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    border: 1px solid $green;
 
     span {
       color: $dark-grey;
@@ -49,11 +49,14 @@ app-button {
 
     &.secondary {
       background-color: transparent;
-      border: 1px solid $green;
 
       span {
         color: $green;
       }
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 0 15px 0 rgba($color: $green, $alpha: 1);
     }
   }
 
@@ -90,12 +93,6 @@ app-button {
       border-style: solid;
       border-width: 10px 10px 0 10px;
       border-color: $green transparent transparent transparent;
-    }
-  }
-
-  &:hover:not(:disabled) {
-    .btn {
-      box-shadow: 0 0 15px 0 rgba($color: $green, $alpha: 1);
     }
   }
 
