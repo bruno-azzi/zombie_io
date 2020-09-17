@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import gsap, { Power4 } from 'gsap';
 
+import { AlertService } from './../../core/services/alert/alert.service';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -21,7 +23,7 @@ export class HeaderComponent implements OnInit {
   menuOpened = false;
   tl = gsap.timeline();
 
-  constructor() { }
+  constructor(public alert: AlertService) { }
 
   ngOnInit(): void {
 

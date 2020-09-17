@@ -47,6 +47,10 @@
         >
         </app-section-title>
 
+        <div class="empty-inventory" *ngIf="isEditPage() && calculateInventoryValue(form.get('items').value) === 0">
+          <p>Empty inventory</p>
+        </div>
+
         <app-inventory
           [showOnlyBiggerThanZero]="!editableInventory"
           [editableForm]="editableInventory"

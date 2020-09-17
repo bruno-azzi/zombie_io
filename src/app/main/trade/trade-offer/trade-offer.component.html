@@ -5,7 +5,7 @@
         <app-dropdown
           [formControl]="selectControl"
           [options]="survivors"
-          placeholder="selectPlaceholder"
+          [placeholder]="selectPlaceholder"
           (selectionChanged)="survivorChanged.emit($event)"
         >
         </app-dropdown>

@@ -18,4 +18,10 @@
       </button>
     </nav>
   </div>
+
+  <app-report-modal
+    *ngIf="alert.reportModal.show"
+    [infectedSurvivor]="alert.reportModal.infectedSurvivor"
+  >
+  </app-report-modal>
 </header>

@@ -1,0 +1,24 @@
+<div data-component="report-modal">
+  <app-loader *ngIf="loading"></app-loader>
+
+  <div class="wrapper">
+    <app-dropdown
+      label="Who are you"
+      [formControl]="currentSurvivor"
+      [options]="survivors"
+      placeholder="Select your name"
+    >
+    </app-dropdown>
+
+    <p class="warning-text">Are you sure that you want to flag <strong>{{ infectedSurvivor.name }}</strong> as <strong class="infected">infected</strong>?</p>
+  </div>
+
+  <app-button
+    title="Confirm"
+    [disabled]="!currentSurvivor.value"
+    (clickOutput)="confirm()"
+  >
+  </app-button>
+</div>
+
+<div class="report-overlay" (click)="closeModal()"></div>

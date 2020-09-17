@@ -1,4 +1,11 @@
 <div data-component="dropdown" [class.filled]="formControl.value">
+  <label
+    *ngIf="label"
+    class="input-label"
+  >
+    {{ label }}
+  </label>
+
   <ngx-select-dropdown
     [config]="config"
     [options]="options"

@@ -19,6 +19,7 @@
     transition: 250ms ease;
     height: 100%;
     box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: .5);
+    position: relative;
 
     @include sm {
       padding: 12px 16px 12px 12px;
@@ -29,7 +30,9 @@
 
       .text-wrapper {
         .name {
-          color: $green;
+          a {
+            color: $green;
+          }
         }
       }
     }
@@ -70,6 +73,7 @@
         font-weight: 600;
         line-height: 24px;
         word-break: break-word;
+        max-width: calc(100% - 20px);
 
         @include sm {
           font-size: 17px;
@@ -83,6 +87,69 @@
           @include sm {
             font-size: 16px;
           }
+        }
+      }
+
+      .dark-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: $green, $alpha: .1);
+        z-index: 5;
+        display: none;
+        border-radius: 8px;
+      }
+
+      .more-btn {
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        border: 0;
+        border-radius: 50%;
+        position: absolute;
+        top: 15px;
+        right: 5px;
+
+        &:focus {
+          .report-menu {
+            display: block;
+          }
+
+          & + .dark-bg {
+            display: block;
+          }
+        }
+      }
+
+      .report-menu {
+        position: absolute;
+        top: -1px;
+        right: 40px;
+        background: $medium-grey;
+        z-index: 10;
+        border-radius: 4px;
+        padding: 8px 10px;
+        box-shadow: 0 0 10px 0 rgba($color: $red, $alpha: .2);
+        display: none;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: -8px;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 7.5px 0 7.5px 10px;
+          border-color: transparent transparent transparent $medium-grey;
+        }
+
+        li {
+          font-size: 15px;
+          color: $red;
         }
       }
 

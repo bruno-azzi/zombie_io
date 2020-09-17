@@ -15,5 +15,16 @@
     margin: 0 0 20px;
   }
 
+  .empty-inventory {
+    text-align: center;
+    padding: 30px 0 20px;
+
+    p {
+      color: $white-grey;
+      font-size: 24px;
+      margin: 0 0 30px;
+    }
+  }
+
 }
 

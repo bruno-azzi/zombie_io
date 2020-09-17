@@ -88,4 +88,10 @@ export class SurvivorsService {
     });
   }
 
+  flagAsInfected(reporterId: string, infectedPersonId) {
+    return this.http.post(`${environment.apiUrl}/${reporterId}/report_infection.json`, {
+      infected: infectedPersonId
+    });
+  }
+
 }

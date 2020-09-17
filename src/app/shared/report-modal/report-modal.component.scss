@@ -1,0 +1,67 @@
+@import 'base/imports';
+
+[data-component='report-modal'] {
+  background-color: $light-grey;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  min-height: 420px;
+  border-radius: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include large-mobile {
+    max-width: 420px;
+    padding: 30px;
+  }
+
+  .warning-text {
+    text-align: center;
+    font-size: 20px;
+    color: $white-grey;
+    margin: 0 0 40px;
+    padding: 0 25px;
+
+    strong {
+      color: $green;
+
+      &.infected {
+        color: $red;
+        font-weight: 600;
+      }
+    }
+  }
+
+  [data-component='button'] {
+    width: 100%;
+  }
+
+  [data-component='dropdown'] {
+    margin: 0 0 45px;
+
+    @include sm {
+      margin: 0 0 45px;
+    }
+  }
+
+}
+
+.report-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: $black, $alpha: .6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  cursor: pointer;
+}

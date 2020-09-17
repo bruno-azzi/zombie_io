@@ -21,27 +21,27 @@ export class DropdownComponent implements OnInit {
   @Input() searchPlaceholder = 'Search';
   @Input() searchOnKey = 'name';
   @Input() displayKey = 'name';
+  @Input() label: string;
   @Input() options = [];
   @Input() formControl = new FormControl();
 
   @Output() selectionChanged = new EventEmitter();
 
-  config = {
-    displayKey: this.displayKey,
-    search: true,
-    height: 'auto',
-    placeholder: this.placeholder,
-    limitTo: 0,
-    noResultsFound: 'No results found',
-    searchPlaceholder: this.searchPlaceholder,
-    searchOnKey: this.searchOnKey,
-    clearOnSelection: true
-  };
+  config = {};
 
   constructor() { }
 
   ngOnInit(): void {
-
+    this.config = {
+      displayKey: this.displayKey,
+      search: true,
+      placeholder: this.placeholder,
+      limitTo: 0,
+      noResultsFound: 'No results found',
+      searchPlaceholder: this.searchPlaceholder,
+      searchOnKey: this.searchOnKey,
+      clearOnSelection: true
+    };
   }
 
   onChange(change) {

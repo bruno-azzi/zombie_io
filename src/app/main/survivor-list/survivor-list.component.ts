@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { Survivor } from './../../core/types/survivor.types';
+import { AlertService } from './../../core/services/alert/alert.service';
 import { SurvivorsService } from '../../core/services/survivors/survivors.service';
 
 @Component({
@@ -20,7 +21,10 @@ export class SurvivorListComponent implements OnInit {
   fakeCardList = [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ];
   itemsPerPage = window.innerWidth >= 768 ? 24 : 12;
 
-  constructor(private service: SurvivorsService) { }
+  constructor(
+    private alert: AlertService,
+    private service: SurvivorsService
+  ) { }
 
   ngOnInit(): void {
     this.getSurvivors();
@@ -51,6 +55,13 @@ export class SurvivorListComponent implements OnInit {
     });
 
     this.loading = false;
+  }
+
+  flagAsInfected(event, infectedSurvivor: Survivor) {
+    const el = event.target.parentElement.parentElement;
+    el.blur();
+
+    this.alert.openReportModal(infectedSurvivor);
   }
 
 }

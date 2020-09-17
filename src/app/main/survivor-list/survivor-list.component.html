@@ -27,18 +27,27 @@
 
   <div class="row" *ngIf="!loading">
     <div class="card-column col-sm-6 col-md-4 col-xl-3" *ngFor="let survivor of filteredSurvivors | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
-      <a [routerLink]="['/survivors', survivor.id]">
-        <div class="card">
-          <div class="picture-wrapper">
-            <span class="initials">{{ survivor.initialLetters }}</span>
-          </div>
-
-          <div class="text-wrapper">
-            <strong class="name">{{ survivor.name }}<span>, {{ survivor.age }}</span></strong>
-            <span class="status" [ngClass]="survivor.infected ? 'infected' : 'healthy'">{{ survivor.infected ? 'Infected' : 'Healthy' }}</span>
-          </div>
+      <div class="card">
+        <div class="picture-wrapper">
+          <span class="initials">{{ survivor.initialLetters }}</span>
         </div>
-      </a>
+
+        <div class="text-wrapper">
+          <strong class="name" >
+            <a [routerLink]="['/survivors', survivor.id]">{{ survivor.name }}</a>
+            <span>, {{ survivor.age }}</span>
+          </strong>
+          <span class="status" [ngClass]="survivor.infected ? 'infected' : 'healthy'">{{ survivor.infected ? 'Infected' : 'Healthy' }}</span>
+
+          <button class="material-icons more-btn">
+            more_vert
+            <ul class="report-menu">
+              <li (click)="flagAsInfected($event, survivor)">Flag as infected</li>
+            </ul>
+          </button>
+          <div class="dark-bg"></div>
+        </div>
+      </div>
     </div>
   </div>
 

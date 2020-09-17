@@ -88,6 +88,11 @@
       }
 
       .available-items {
+        height: 200px;
+        overflow: auto;
+        margin: 15px 0 0 !important;
+        scrollbar-color: $green $light-grey;
+
         li {
           color: $white-grey !important;
           padding: 0 !important;
@@ -97,6 +102,29 @@
           &:hover {
             color: $green !important;
           }
+        }
+
+        /* width */
+        &::-webkit-scrollbar {
+          width: 10px;
+          border-radius: 4px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+          background: $dark-grey;
+          border-radius: 4px;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+          background: $green;
+          border-radius: 4px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+          background: $green;
         }
       }
     }

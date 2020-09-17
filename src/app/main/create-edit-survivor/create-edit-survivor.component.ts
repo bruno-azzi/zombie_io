@@ -6,8 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LonLatFormatter } from 'src/app/core/utils/lonlat-formatter';
 import { AlertService } from '../../core/services/alert/alert.service';
 import { InventoryManagement } from './../../core/utils/inventory-management';
+import { Survivor, SurvivorPayload } from 'src/app/core/types/survivor.types';
 import { SurvivorsService } from '../../core/services/survivors/survivors.service';
-import { Inventory, Survivor, SurvivorPayload } from 'src/app/core/types/survivor.types';
 
 @Component({
   selector: 'app-create-edit-survivor',
@@ -49,6 +49,7 @@ export class CreateEditSurvivorComponent implements OnInit {
   loading = false;
   survivor: Survivor;
   editableInventory = true;
+  calculateInventoryValue = InventoryManagement.calculateInventoryValue;
 
   constructor(
     private router: Router,

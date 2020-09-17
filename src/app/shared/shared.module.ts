@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
 import { DropdownComponent } from './dropdown/dropdown.component';
 import { InventoryComponent } from './inventory/inventory.component';
+import { ReportModalComponent } from './report-modal/report-modal.component';
 import { SectionTitleComponent } from './section-title/section-title.component';
 import { ConditionToggleComponent } from './condition-toggle/condition-toggle.component';
 
@@ -29,6 +30,7 @@ import { ConditionToggleComponent } from './condition-toggle/condition-toggle.co
     LoaderComponent,
     DropdownComponent,
     InventoryComponent,
+    ReportModalComponent,
     SectionTitleComponent,
     ConditionToggleComponent
   ],
@@ -41,6 +43,7 @@ import { ConditionToggleComponent } from './condition-toggle/condition-toggle.co
     LoaderComponent,
     DropdownComponent,
     InventoryComponent,
+    ReportModalComponent,
     SectionTitleComponent,
     ConditionToggleComponent
   ],
