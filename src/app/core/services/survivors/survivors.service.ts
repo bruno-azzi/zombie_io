@@ -80,4 +80,12 @@ export class SurvivorsService {
     return this.http.patch(`${environment.apiUrl}/people/${id}.json`, payload);
   }
 
+  trade(id, payload) {
+    return this.http.post(`${environment.apiUrl}/people/${id}/properties/trade_item.json`, {
+      name: 'teste',
+      payment: 'Fiji water:1',
+      pick: 'Fiji water:1'
+    });
+  }
+
 }

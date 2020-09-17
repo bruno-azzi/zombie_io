@@ -2,4 +2,25 @@
 
 [data-component='trade'] {
 
+  .trade-column {
+    [data-component='button'] {
+      width: 100%;
+    }
+  }
+
+  [data-component='trade-offer'] {
+    [data-component='inventory'] {
+      .item {
+        box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: 1);
+        cursor: default;
+      }
+    }
+  }
+
+  [data-component='inventory'] {
+    .item {
+      cursor: pointer;
+    }
+  }
+
 }

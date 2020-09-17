@@ -1,7 +1,9 @@
-<div data-component="dropdown">
+<div data-component="dropdown" [class.filled]="formControl.value">
   <ngx-select-dropdown
     [config]="config"
     [options]="options"
+    [formControl]="formControl"
+    (change)="onChange($event)"
   >
   </ngx-select-dropdown>
 </div>

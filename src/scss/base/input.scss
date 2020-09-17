@@ -16,7 +16,7 @@
 
 .input-field {
   &.error {
-    color: $red;
+    color: $red !important;
     caret-color: $red;
 
     &::placeholder {

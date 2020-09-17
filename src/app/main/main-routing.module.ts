@@ -29,7 +29,10 @@ const routes: Routes = [
   },
   {
     path: 'trade',
-    component: TradeComponent
+    component: TradeComponent,
+    data: {
+      fullContainer: true
+    }
   },
   {
     path: '**',

@@ -1,5 +1,67 @@
 <div data-component="trade">
   <app-section-title title="Trade"></app-section-title>
 
-  <app-dropdown></app-dropdown>
+  <app-loader *ngIf="loading"></app-loader>
+
+  <div class="row">
+    <div class="col-md-5">
+      <app-loader *ngIf="firstSurvivorLoading"></app-loader>
+
+      <app-trade-offer
+        [survivors]="filteredSurvivors"
+        [selectControl]="form.get('firstSurvivor')"
+        [inventoryForm]="form.get('firstOffer')"
+        selectPlaceholder="Survivor 1"
+        (survivorChanged)="onChangeSurvivor($event, 'firstSurvivor')"
+      >
+      </app-trade-offer>
+
+      <div *ngIf="form.get('firstSurvivor').value">
+        <app-section-title title="Inventory" [total]="calculateInventoryValue(form.get('firstInventory').value)"></app-section-title>
+
+        <app-inventory
+          [showOnlyBiggerThanZero]="true"
+          [form]="form.get('firstInventory')"
+          [editableForm]="false"
+          (itemClicked)="addItemToOffer($event, 'firstOffer')"
+        >
+        </app-inventory>
+      </div>
+    </div>
+
+    <div class="col-md-2 trade-column">
+      <app-button
+        title="Trade"
+        (clickOutput)="trade()"
+        [disabled]="!isTradeValid()"
+        tooltip="Both inventory values must be the same"
+      >
+      </app-button>
+    </div>
+
+    <div class="col-md-5">
+      <app-loader *ngIf="secondSurvivorLoading"></app-loader>
+
+      <app-trade-offer
+        [survivors]="filteredSurvivors"
+        [selectControl]="form.get('secondSurvivor')"
+        [inventoryForm]="form.get('secondOffer')"
+        selectPlaceholder="Survivor 2"
+        (survivorChanged)="onChangeSurvivor($event, 'secondSurvivor')"
+      >
+      </app-trade-offer>
+
+      <div *ngIf="form.get('secondSurvivor').value">
+        <app-section-title title="Inventory" [total]="calculateInventoryValue(form.get('secondInventory').value)"></app-section-title>
+
+        <app-inventory
+          [showOnlyBiggerThanZero]="true"
+          [form]="form.get('secondInventory')"
+          [editableForm]="false"
+          (itemClicked)="addItemToOffer($event, 'secondOffer')"
+        >
+        </app-inventory>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,71 @@
+@import 'base/imports';
+
+[data-component='trade-offer'] {
+  position: relative;
+
+  .trade-header {
+    background-color: $light-grey;
+    padding: 20px;
+    border: 1px solid $green;
+    border-radius: 8px 8px 0 0;
+  }
+
+  [data-component='dropdown'] {
+    margin: 0;
+    box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: 1);
+  }
+
+  .points-qtd {
+    font-size: 24px;
+    color: $green;
+    font-weight: 600;
+    text-align: right;
+    display: block;
+  }
+
+  .inventory-wrapper {
+    background-color: $light-grey;
+    padding: 20px;
+    border: 1px solid $green;
+    border-top: 0;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .empty-offer {
+    text-align: center;
+    padding: 30px 0 20px;
+
+    p {
+      color: $white-grey;
+      font-size: 20px;
+      text-transform: uppercase;
+      margin: 0 0 30px;
+    }
+
+    .material-icons {
+      position: relative;
+      transform: rotate(90deg);
+      font-size: 36px;
+      color: $white-grey;
+      animation: bounce 1s ease-in-out infinite alternate;
+    }
+  }
+
+  .error-label {
+    text-align: center;
+    font-size: 18px;
+    margin: 0 0 30px;
+    font-weight: 600;
+  }
+
+  @keyframes bounce {
+    from {
+      transform: translateY(-20px) rotate(90deg);
+    }
+
+    to {
+      transform: translateY(10px) rotate(90deg);
+    }
+  }
+
+}

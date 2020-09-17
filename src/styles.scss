@@ -45,6 +45,14 @@ html {
   }
 }
 
+.container {
+  &.container-bigger {
+    @include xl {
+      max-width: 1700px;
+    }
+  }
+}
+
 .main-content {
   border-radius: 8px;
   background-color: $medium-grey;

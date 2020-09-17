@@ -1,18 +1,24 @@
-<div data-component="inventory" [class.disabled]="form.disabled">
-  <div class="item-column" *ngFor="let item of itemList">
-    <label [for]="item.formControlName" class="item">
+<div data-component="inventory">
+  <div class="item-column" *ngFor="let item of itemList" [hidden]="showOnlyBiggerThanZero && !(form.get(item.formControlName).value > 0)">
+    <div
+      class="item"
+      (click)="onItemClick(item.formControlName, form.get(item.formControlName).value)"
+      [class.error]="form.get(item.formControlName).invalid"
+    >
       <span class="item-name">{{ item.name }}</span>
 
       <img class="item-img" [src]="item.img" [alt]="item.name">
 
+      <span *ngIf="!editableForm" class="qtd">{{ form.get(item.formControlName).value }}</span>
+
       <app-input
-        [id]="item.formControlName"
+        *ngIf="editableForm"
         [formControl]="form.get(item.formControlName)"
         maxlength="4"
         placeholder="0"
         inputMask="9999"
       >
       </app-input>
-    </label>
+    </div>
   </div>
 </div>

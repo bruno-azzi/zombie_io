@@ -1,5 +1,5 @@
 import { FormGroup } from '@angular/forms';
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewEncapsulation, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-inventory',
@@ -8,9 +8,9 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 
-export class InventoryComponent implements OnInit {
+export class InventoryComponent implements OnInit, OnChanges {
 
-  itemList = [
+  @Input() itemList = [
     {
       formControlName: 'fijiWater',
       name: 'Fiji Water',
@@ -34,14 +34,28 @@ export class InventoryComponent implements OnInit {
   ];
 
   @Input() form: FormGroup;
-  @Input() disabled = false;
+  @Input() editableForm = true;
+  @Input() showOnlyBiggerThanZero = false;
+
+  @Output() itemClicked = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
-    if (this.disabled) {
-      this.form.disable();
+
+  }
+
+  ngOnChanges(change: SimpleChanges) {
+    if (change.form) {
+      this.form = change.form.currentValue;
     }
+  }
+
+  onItemClick(formControlName: string, amount: number) {
+    this.itemClicked.emit({
+      name: formControlName,
+      amount
+    });
   }
 
 }

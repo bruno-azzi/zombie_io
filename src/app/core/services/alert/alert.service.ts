@@ -20,7 +20,8 @@ export class AlertService {
     this.toast.success(message, title, {
       progressBar: true,
       extendedTimeOut: 2000,
-      timeOut: 10000
+      timeOut: 10000,
+      enableHtml: true
     });
   }
 
@@ -28,7 +29,8 @@ export class AlertService {
     this.toast.error(message, title, {
       progressBar: true,
       extendedTimeOut: 2000,
-      timeOut: 10000
+      timeOut: 10000,
+      enableHtml: true
     });
   }
 

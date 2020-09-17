@@ -1,10 +1,18 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef, Input, OnInit, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => DropdownComponent),
+      multi: true
+    }
+  ]
 })
 
 export class DropdownComponent implements OnInit {
@@ -14,6 +22,9 @@ export class DropdownComponent implements OnInit {
   @Input() searchOnKey = 'name';
   @Input() displayKey = 'name';
   @Input() options = [];
+  @Input() formControl = new FormControl();
+
+  @Output() selectionChanged = new EventEmitter();
 
   config = {
     displayKey: this.displayKey,
@@ -32,5 +43,15 @@ export class DropdownComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  onChange(change) {
+    this.selectionChanged.emit(change.value);
+  }
+
+  writeValue(): void {}
+
+  registerOnChange(): void {}
+
+  registerOnTouched(): void {}
 
 }

@@ -30,3 +30,10 @@ export interface ApiItem {
   item: { name: string, points: number };
   quantity: number;
 }
+
+export enum ItemValueEnum {
+  fijiWater = 14,
+  campbellSoup = 12,
+  firstAid = 10,
+  ak47 = 8
+}

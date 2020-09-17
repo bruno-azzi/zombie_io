@@ -1,0 +1,37 @@
+<div data-component="trade-offer">
+  <div class="trade-header">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-md-6">
+        <app-dropdown
+          [formControl]="selectControl"
+          [options]="survivors"
+          placeholder="selectPlaceholder"
+          (selectionChanged)="survivorChanged.emit($event)"
+        >
+        </app-dropdown>
+      </div>
+
+      <div class="col-md-6">
+        <span class="points-qtd">{{ calculateInventoryValue(inventoryForm.value) }} Points</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="inventory-wrapper" *ngIf="selectControl.value">
+    <div class="empty-offer" *ngIf="calculateInventoryValue(inventoryForm.value) === 0">
+      <p>Select the items that you want to trade</p>
+      <span class="material-icons">double_arrow</span>
+    </div>
+
+    <div class="amount-error" *ngIf="inventoryForm.invalid">
+      <p class="error-label">Incoherent amount</p>
+    </div>
+
+    <app-inventory
+      *ngIf="calculateInventoryValue(inventoryForm.value) > 0"
+      [showOnlyBiggerThanZero]="true"
+      [form]="inventoryForm"
+    >
+    </app-inventory>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div data-component="create-edit-survivor">
-  <app-section-title title="Create new survivor"></app-section-title>
+  <app-section-title [title]="isEditPage() ? 'Edit survivor' : 'Create new survivor'"></app-section-title>
 
   <app-loader *ngIf="loading"></app-loader>
 
@@ -46,7 +46,10 @@
           [complement]="isEditPage() ? 'Not editable' : ''"
         >
         </app-section-title>
+
         <app-inventory
+          [showOnlyBiggerThanZero]="!editableInventory"
+          [editableForm]="editableInventory"
           [form]="form.get('items')"
         >
         </app-inventory>

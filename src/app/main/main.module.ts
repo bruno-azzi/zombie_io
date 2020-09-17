@@ -11,6 +11,7 @@ import { TradeComponent } from './trade/trade.component';
 import { MainRoutingModule } from './main-routing.module';
 import { FilterComponent } from './survivor-list/filter/filter.component';
 import { SurvivorListComponent } from './survivor-list/survivor-list.component';
+import { TradeOfferComponent } from './trade/trade-offer/trade-offer.component';
 import { GlobalReportsComponent } from './global-reports/global-reports.component';
 import { CreateEditSurvivorComponent } from './create-edit-survivor/create-edit-survivor.component';
 
@@ -18,6 +19,7 @@ import { CreateEditSurvivorComponent } from './create-edit-survivor/create-edit-
   declarations: [
     TradeComponent,
     FilterComponent,
+    TradeOfferComponent,
     SurvivorListComponent,
     GlobalReportsComponent,
     CreateEditSurvivorComponent

@@ -1,9 +1,13 @@
 @import 'base/imports';
 
 [data-component='dropdown'] {
+  margin: 0 0 16px;
+
+  @include sm {
+    margin: 0 0 24px;
+  }
 
   .ngx-dropdown-container {
-
     .ngx-dropdown-button {
       background-color: $light-grey !important;
       border: 1px solid $green !important;
@@ -96,7 +100,16 @@
         }
       }
     }
+  }
 
+  &.filled {
+    .ngx-dropdown-container {
+      .ngx-dropdown-button {
+        .display-text {
+          color: $green;
+        }
+      }
+    }
   }
 
 }

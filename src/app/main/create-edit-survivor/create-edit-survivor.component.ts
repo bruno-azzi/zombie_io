@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { LonLatFormatter } from 'src/app/core/utils/lonlat-formatter';
 import { AlertService } from '../../core/services/alert/alert.service';
+import { InventoryManagement } from './../../core/utils/inventory-management';
 import { SurvivorsService } from '../../core/services/survivors/survivors.service';
 import { Inventory, Survivor, SurvivorPayload } from 'src/app/core/types/survivor.types';
 
@@ -47,6 +48,7 @@ export class CreateEditSurvivorComponent implements OnInit {
 
   loading = false;
   survivor: Survivor;
+  editableInventory = true;
 
   constructor(
     private router: Router,
@@ -62,7 +64,7 @@ export class CreateEditSurvivorComponent implements OnInit {
     if (this.isEditPage()) {
       this.survivorId = this.route.snapshot.paramMap.get('id');
       this.getSurvivorById(this.survivorId);
-      this.form.get('items').disable();
+      this.editableInventory = false;
     }
   }
 
@@ -92,8 +94,6 @@ export class CreateEditSurvivorComponent implements OnInit {
       this.survivor.items = data[1];
       this.form.patchValue(this.survivor);
       this.loading = false;
-      console.log(this.survivor);
-      console.log(this.form.value);
     }, error => {
       this.loading = false;
       this.router.navigate(['/survivors']);
@@ -103,7 +103,6 @@ export class CreateEditSurvivorComponent implements OnInit {
   onSubmit() {
     this.loading = true;
     const payload: SurvivorPayload = this.formatPayload(this.form.value);
-    console.log('payload', payload);
 
     if (this.isEditPage()) {
       this.edit(this.survivorId, payload);
@@ -113,23 +112,20 @@ export class CreateEditSurvivorComponent implements OnInit {
   }
 
   create(payload: SurvivorPayload) {
-    this.service.createNewSurvivor(payload).subscribe(data => {
-      console.log('response', data);
+    this.service.createNewSurvivor(payload).subscribe((data: Survivor) => {
       this.loading = false;
       this.router.navigate(['/survivors']);
-      this.alert.showSuccess('Success', `Survivor ${this.survivor.name} was successfully created.`);
+      this.alert.showSuccess('Success', `Survivor <strong>${data.name}</strong> was successfully created.`);
     }, error => {
       this.loading = false;
     });
   }
 
   edit(id: string, payload: SurvivorPayload) {
-    console.log('edit', payload)
-    this.service.editSurvivor(id, payload).subscribe(data => {
-      console.log('response', data);
+    this.service.editSurvivor(id, payload).subscribe((data: Survivor) => {
       this.loading = false;
       this.router.navigate(['/survivors']);
-      this.alert.showSuccess('Success', `Survivor ${this.survivor.name} was successfully edited.`);
+      this.alert.showSuccess('Success', `Survivor <strong>${data.name}</strong> was successfully edited.`);
     }, error => {
       this.loading = false;
     });
@@ -140,17 +136,11 @@ export class CreateEditSurvivorComponent implements OnInit {
       name: form.name,
       age: form.age,
       gender: form.gender,
-      items: this.isEditPage() ? null : this.parseItemsToString(form.items),
+      items: this.isEditPage() ? undefined : InventoryManagement.parseItemsToString(form.items),
       lonlat: LonLatFormatter.parseToPointFormat(form.lonlat),
     };
 
     return payload;
-  }
-
-  parseItemsToString(items: Inventory) {
-    const { fijiWater, campbellSoup, firstAid, ak47 } = items;
-
-    return `Fiji Water:${fijiWater};Campbell Soup:${campbellSoup};First Aid Pouch:${firstAid};AK47:${ak47}`;
   }
 
   isEditPage() {

@@ -18,7 +18,7 @@ import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output,
 export class InputComponent implements OnInit {
 
   @Input() type = 'text';
-  @Input() id: string;
+  @Input() id = Date.now();
   @Input() label: string;
   @Input() placeholder = '';
   @Input() maxlength: number;
