@@ -8,6 +8,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class PriceTableComponent implements OnInit {
 
+  /**
+   * Price table data
+   */
   priceTable = [
     {
       value: 14,

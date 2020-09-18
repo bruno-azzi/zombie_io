@@ -40,6 +40,9 @@ export class TradeComponent implements OnInit {
     this.getSurvivorList();
   }
 
+  /**
+   * Initiliaze form
+   */
   createForm() {
     this.form = this.fb.group({
       firstSurvivor: [''],
@@ -71,6 +74,9 @@ export class TradeComponent implements OnInit {
     });
   }
 
+  /**
+   * Get a list of survivors
+   */
   getSurvivorList() {
     this.loading = true;
 
@@ -83,6 +89,11 @@ export class TradeComponent implements OnInit {
     });
   }
 
+  /**
+   * On change survivor in the dropdown component
+   * @param survivor new survivor
+   * @param type firstSurvivor || secondSurvivor
+   */
   onChangeSurvivor(survivor: Survivor, type: string) {
     const firstSurvivor = this.form.get('firstSurvivor').value;
     const secondSurvivor = this.form.get('secondSurvivor').value;
@@ -95,6 +106,10 @@ export class TradeComponent implements OnInit {
     this.getSurvivorInventory(survivor.id, type);
   }
 
+  /**
+   * Reset survivors trade offers and inventories
+   * @param type firstSurvivor || secondSurvivor
+   */
   resetOffersAndInventories(type: string) {
     if (type === 'firstSurvivor') {
       this.form.get('firstInventory').patchValue(this.resetedInventory);
@@ -105,6 +120,11 @@ export class TradeComponent implements OnInit {
     }
   }
 
+  /**
+   * Get survivor inventory by his id
+   * @param id survivor id
+   * @param type firstSurvivor || secondSurvivor
+   */
   getSurvivorInventory(id: string, type: string) {
     if (type === 'firstSurvivor') {
       this.firstSurvivorLoading = true;
@@ -126,6 +146,11 @@ export class TradeComponent implements OnInit {
     });
   }
 
+  /**
+   * Add an item to the survivor offer
+   * @param param0 object containing item name and amount
+   * @param type firstOffer || secondOffer
+   */
   addItemToOffer({ name, amount }, type: string) {
     if (type === 'firstOffer') {
       this.form.get('firstOffer').get(name).patchValue(amount > 0 ? 1 : 0);
@@ -138,6 +163,9 @@ export class TradeComponent implements OnInit {
     }
   }
 
+  /**
+   * Check if trade is valid, both offers must have same the value and be different than zero
+   */
   isTradeValid() {
     const totalFirst = this.calculateInventoryValue(this.form.get('firstOffer').value);
     const totalSecond = this.calculateInventoryValue(this.form.get('secondOffer').value);
@@ -145,6 +173,9 @@ export class TradeComponent implements OnInit {
     return this.form.valid && (totalFirst !== 0 && totalSecond !== 0) && totalFirst === totalSecond ? true : false;
   }
 
+  /**
+   * Make a trade request
+   */
   trade() {
     if (this.isTradeValid()) {
       this.loading = true;
@@ -162,6 +193,9 @@ export class TradeComponent implements OnInit {
     }
   }
 
+  /**
+   * Format trade payload to send to api
+   */
   createPayload() {
     const payload = {
       consumer: {
@@ -174,6 +208,9 @@ export class TradeComponent implements OnInit {
     return JSON.stringify(payload);
   }
 
+  /**
+   * After a trade is successful completed, adjust the screen to make a new one
+   */
   prepareToNewTrade() {
     const firstSurvivorId = this.form.get('firstSurvivor').value.id;
     const secondSurvivorId = this.form.get('secondSurvivor').value.id;

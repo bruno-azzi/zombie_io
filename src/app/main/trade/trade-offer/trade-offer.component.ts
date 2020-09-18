@@ -13,13 +13,22 @@ import { InventoryManagement } from 'src/app/core/utils/inventory-management';
 
 export class TradeOfferComponent implements OnInit {
 
+  /** List of survivors */
   @Input() survivors: Survivor[];
+
+  /** FormControl for the dropdown component */
   @Input() selectControl = new FormControl();
+
+  /** Dropdown placeholder text */
   @Input() selectPlaceholder: string;
+
+  /** Inventory formControl */
   @Input() inventoryForm: FormGroup;
 
+  /** Triggered when changing survivor in dropdown */
   @Output() survivorChanged = new EventEmitter();
 
+  /** Calculate survivor inventory value */
   calculateInventoryValue = InventoryManagement.calculateInventoryValue;
 
   constructor() { }

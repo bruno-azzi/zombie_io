@@ -15,6 +15,10 @@ export class HttpInterceptor implements HttpInterceptor {
     private alert: AlertService
   ) { }
 
+  /**
+   * Intercept all api requests
+   * @param req request
+   */
   intercept(req, next) {
     return next.handle(req.clone()).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -24,6 +28,10 @@ export class HttpInterceptor implements HttpInterceptor {
     );
   }
 
+  /**
+   * Handle any error that occurs in a request and show error message to user
+   * @param error error object
+   */
   handleError(error: HttpErrorResponse) {
     if (error.status === 404) {
       this.alert.showError('Error', 'This register was not found');

@@ -3,6 +3,10 @@ export class LonLatFormatter {
   /** 10km north security */
   static tenKmLatSecurity = 0.0899;
 
+  /**
+   * Parse survivor location from api format
+   * @param lonlat survivor longitude and latitude
+   */
   static parseFromPointFormat(lonlat: string) {
     const lon = +lonlat.split(' ')[1].replace('(', '');
     let lat = +lonlat.split(' ')[2].replace(')', '');
@@ -13,6 +17,10 @@ export class LonLatFormatter {
     return `${lat} ${lon}`;
   }
 
+  /**
+   * Parse survivor location to api format
+   * @param lonlat survivor longitude and latitude
+   */
   static parseToPointFormat(lonlat: string) {
     let lat = +lonlat.split(' ')[0];
     const lon = +lonlat.split(' ')[1];

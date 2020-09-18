@@ -31,6 +31,7 @@ export class CreateEditSurvivorComponent implements OnInit {
     }
   };
 
+  /** Object containing input error messages */
   errorMessages = {
     name: [
       {
@@ -69,6 +70,9 @@ export class CreateEditSurvivorComponent implements OnInit {
     }
   }
 
+  /**
+   * Initialize form
+   */
   createForm() {
     this.form = this.fb.group({
       name: [null, Validators.required],
@@ -84,6 +88,10 @@ export class CreateEditSurvivorComponent implements OnInit {
     });
   }
 
+  /**
+   * Get survivor data by his id
+   * @param id survivor id
+   */
   getSurvivorById(id: string) {
     this.loading = true;
 
@@ -101,6 +109,9 @@ export class CreateEditSurvivorComponent implements OnInit {
     });
   }
 
+  /**
+   * On form submit
+   */
   onSubmit() {
     this.loading = true;
     const payload: SurvivorPayload = this.formatPayload(this.form.value);
@@ -112,6 +123,10 @@ export class CreateEditSurvivorComponent implements OnInit {
     }
   }
 
+  /**
+   * Create a new survivor
+   * @param payload survivor data
+   */
   create(payload: SurvivorPayload) {
     this.service.createNewSurvivor(payload).subscribe((data: Survivor) => {
       this.loading = false;
@@ -122,6 +137,11 @@ export class CreateEditSurvivorComponent implements OnInit {
     });
   }
 
+  /**
+   * Edit current survivor
+   * @param id survivor id
+   * @param payload survivor data
+   */
   edit(id: string, payload: SurvivorPayload) {
     this.service.editSurvivor(id, payload).subscribe((data: Survivor) => {
       this.loading = false;
@@ -132,6 +152,10 @@ export class CreateEditSurvivorComponent implements OnInit {
     });
   }
 
+  /**
+   * Format survivor data to send to api
+   * @param form form containing survivor data
+   */
   formatPayload(form: Survivor) {
     const payload: SurvivorPayload = {
       name: form.name,
@@ -144,6 +168,9 @@ export class CreateEditSurvivorComponent implements OnInit {
     return payload;
   }
 
+  /**
+   * Check if is create or edit page by checking if theres a id in route
+   */
   isEditPage() {
     return this.route.snapshot.paramMap.get('id') ? true : false;
   }

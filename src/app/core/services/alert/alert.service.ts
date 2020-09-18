@@ -23,6 +23,11 @@ export class AlertService {
     private toast: ToastrService
   ) { }
 
+  /**
+   * Show success message in a toast component
+   * @param title message title
+   * @param message message body
+   */
   showSuccess(title: string, message?: string) {
     this.toast.success(message, title, {
       progressBar: true,
@@ -32,6 +37,11 @@ export class AlertService {
     });
   }
 
+  /**
+   * Show error message in a toast component
+   * @param title message title
+   * @param message message body
+   */
   showError(title: string, message?: string) {
     this.toast.error(message, title, {
       progressBar: true,
@@ -41,11 +51,18 @@ export class AlertService {
     });
   }
 
+  /**
+   * Open modal to report survivor as infected
+   * @param infectedSurvivor survivor data
+   */
   openReportModal(infectedSurvivor: Survivor) {
     this.reportModal.show = true;
     this.reportModal.infectedSurvivor = infectedSurvivor;
   }
 
+  /**
+   * Close report modal
+   */
   closeReportModal() {
     this.reportModal.show = false;
   }

@@ -30,6 +30,9 @@ export class GlobalReportsComponent implements OnInit {
     this.getReports();
   }
 
+  /**
+   * Get a list of reports about the survivors data
+   */
   getReports() {
     this.loading = true;
 

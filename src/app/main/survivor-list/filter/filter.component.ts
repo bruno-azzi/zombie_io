@@ -25,12 +25,18 @@ export class FilterComponent implements OnInit, OnDestroy {
     this.createForm();
   }
 
+  /**
+   * Initialize form
+   */
   createForm(): void {
     this.form = this.fb.group({
       name: '',
       id: ''
     });
 
+    /**
+     * Keep listening for changes in the filter input
+     */
     this.subscription = this.form.valueChanges.pipe(
       map(() => {
         this.loaderOutput.emit();
@@ -41,10 +47,9 @@ export class FilterComponent implements OnInit, OnDestroy {
       mergeMap(search => of(search))).subscribe(() => this.filterOutput.emit(this.form.value));
   }
 
-  // onSearchById(): void {
-  //   this.filterOutput.emit(this.form.value);
-  // }
-
+  /**
+   * Unsubscribe from filter valueChanges subscription
+   */
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

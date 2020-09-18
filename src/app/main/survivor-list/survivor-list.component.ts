@@ -30,6 +30,9 @@ export class SurvivorListComponent implements OnInit {
     this.getSurvivors();
   }
 
+  /**
+   * Get a list of survivors
+   */
   getSurvivors(): void {
     this.loading = true;
 
@@ -40,10 +43,17 @@ export class SurvivorListComponent implements OnInit {
     });
   }
 
+  /**
+   * Loader output after users filter by survivor name
+   */
   onLoaderOutput(): void {
     this.loading = true;
   }
 
+  /**
+   * On filter by survivor name or uuid
+   * @param filter filter value
+   */
   onFilter(filter): void {
     this.page = 1;
 
@@ -57,6 +67,11 @@ export class SurvivorListComponent implements OnInit {
     this.loading = false;
   }
 
+  /**
+   * Flag survivor as infected
+   * @param event click event
+   * @param infectedSurvivor infected survivor data
+   */
   flagAsInfected(event, infectedSurvivor: Survivor) {
     const el = event.target.parentElement.parentElement;
     el.blur();
