@@ -26,5 +26,27 @@
     }
   }
 
+  .page-header {
+    position: relative;
+  }
+
+  .status {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: $green;
+    padding: 0 0 15px;
+
+    @include sm {
+      padding: 0;
+    }
+
+    &.infected {
+      color: $red;
+    }
+  }
+
 }
 

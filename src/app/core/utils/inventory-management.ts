@@ -16,7 +16,7 @@ export class InventoryManagement {
   static parseItemsToString(items: Inventory) {
     const { fijiWater, campbellSoup, firstAid, ak47 } = items;
 
-    return `Fiji Water:${fijiWater};Campbell Soup:${campbellSoup};First Aid Pouch:${firstAid};AK47:${ak47}`;
+    return `Fiji Water:${fijiWater ? fijiWater : 0};Campbell Soup:${campbellSoup ? campbellSoup : 0};First Aid Pouch:${firstAid ? firstAid : 0};AK47:${ak47 ? ak47 : 0}`;
   }
 
 }

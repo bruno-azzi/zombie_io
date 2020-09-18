@@ -4,7 +4,7 @@
   <app-loader *ngIf="loading"></app-loader>
 
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-5 surv-col">
       <app-loader *ngIf="firstSurvivorLoading"></app-loader>
 
       <app-trade-offer
@@ -19,6 +19,10 @@
       <div *ngIf="form.get('firstSurvivor').value">
         <app-section-title title="Inventory" [total]="calculateInventoryValue(form.get('firstInventory').value)"></app-section-title>
 
+        <div class="empty-inventory" *ngIf="calculateInventoryValue(form.get('firstInventory').value) === 0">
+          <p>Empty inventory</p>
+        </div>
+
         <app-inventory
           [showOnlyBiggerThanZero]="true"
           [form]="form.get('firstInventory')"
@@ -29,17 +33,21 @@
       </div>
     </div>
 
-    <div class="col-md-2 trade-column">
-      <app-button
-        title="Trade"
-        (clickOutput)="trade()"
-        [disabled]="!isTradeValid()"
-        tooltip="Both inventory values must be the same"
-      >
-      </app-button>
+    <div class="col-md-2 trade-col">
+      <div class="middle-column-wrapper">
+        <app-button
+          title="Trade"
+          (clickOutput)="trade()"
+          [disabled]="!isTradeValid()"
+          tooltip="both offer values must be the same"
+        >
+        </app-button>
+
+        <app-price-table></app-price-table>
+      </div>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-5 surv-col">
       <app-loader *ngIf="secondSurvivorLoading"></app-loader>
 
       <app-trade-offer
@@ -53,6 +61,10 @@
 
       <div *ngIf="form.get('secondSurvivor').value">
         <app-section-title title="Inventory" [total]="calculateInventoryValue(form.get('secondInventory').value)"></app-section-title>
+
+        <div class="empty-inventory" *ngIf="calculateInventoryValue(form.get('secondInventory').value) === 0">
+          <p>Empty inventory</p>
+        </div>
 
         <app-inventory
           [showOnlyBiggerThanZero]="true"

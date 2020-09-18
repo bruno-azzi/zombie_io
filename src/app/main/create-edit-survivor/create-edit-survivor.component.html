@@ -1,5 +1,14 @@
 <div data-component="create-edit-survivor">
-  <app-section-title [title]="isEditPage() ? 'Edit survivor' : 'Create new survivor'"></app-section-title>
+  <div class="page-header">
+    <app-section-title [title]="isEditPage() ? 'Edit survivor' : 'Create new survivor'"></app-section-title>
+    <span
+      class="status"
+      [class.infected]="survivor.infected"
+      *ngIf="isEditPage() && survivor"
+    >
+      {{ survivor.infected ? 'Infected' : 'Healthy' }}
+    </span>
+  </div>
 
   <app-loader *ngIf="loading"></app-loader>
 

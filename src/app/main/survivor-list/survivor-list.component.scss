@@ -130,7 +130,6 @@
         background: $medium-grey;
         z-index: 10;
         border-radius: 4px;
-        padding: 8px 10px;
         box-shadow: 0 0 10px 0 rgba($color: $red, $alpha: .2);
         display: none;
 
@@ -150,6 +149,7 @@
         li {
           font-size: 15px;
           color: $red;
+          padding: 8px 10px;
         }
       }
 

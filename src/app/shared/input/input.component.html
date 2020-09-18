@@ -1,9 +1,9 @@
-<div data-component="input" [class.error]="formControl.dirty && formControl.touched && formControl.invalid">
+<div data-component="input" [class.error]="formControl.dirty && formControl.invalid">
   <label
     *ngIf="label"
     class="input-label"
     [for]="id"
-    [class.error]="formControl.dirty && formControl.touched && formControl.invalid"
+    [class.error]="formControl.dirty && formControl.invalid"
   >
     {{ label }}
   </label>
@@ -21,17 +21,18 @@
       [maxlength]="maxlength"
       [formControl]="formControl"
       [placeholder]="placeholder"
-      [class.error]="formControl.dirty && formControl.touched && formControl.invalid"
+      [class.error]="formControl.dirty && formControl.invalid"
       [class.icon-padding]="icon"
       (change)="inputChanged.emit($event.target.value)"
       (keydown.enter)="$event.preventDefault()"
+      (focus)="onFocus($event)"
     >
   </div>
 
   <div class="errors" *ngIf="formControl.errors">
     <label
       class="error-label"
-      [hidden]="!(formControl.errors[item.error] && formControl.dirty && formControl.touched && formControl.invalid)"
+      [hidden]="!(formControl.errors[item.error] && formControl.dirty && formControl.invalid)"
       *ngFor="let item of errorMessages"
     >
       {{ item.message }}

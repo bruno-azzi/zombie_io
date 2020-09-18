@@ -50,20 +50,14 @@ $container-max-widths: (
 
 // CUSTOM BREAKPOINTS
 
-@mixin max-md {
-	@media (max-width: 991px) {
+@mixin large-desktop {
+	@media (min-width: 1540px) {
 		@content;
 	}
 }
 
 @mixin large-mobile {
 	@media (min-width: 480px) {
-		@content;
-	}
-}
-
-@mixin max-mobile {
-	@media (max-width: 767px) {
 		@content;
 	}
 }

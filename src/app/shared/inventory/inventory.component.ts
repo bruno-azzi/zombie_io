@@ -10,7 +10,7 @@ import { Component, Input, OnChanges, OnInit, ViewEncapsulation, SimpleChanges, 
 
 export class InventoryComponent implements OnInit, OnChanges {
 
-  @Input() itemList = [
+  itemList = [
     {
       formControlName: 'fijiWater',
       name: 'Fiji Water',

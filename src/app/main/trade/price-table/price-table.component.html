@@ -1,0 +1,19 @@
+<div data-component="price-table">
+  <h3 class="title">Price Table</h3>
+
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Value</th>
+    </tr>
+
+    <tr *ngFor="let item of priceTable">
+      <td>
+        <img class="item-img" [src]="item.img" [alt]="item.name" [title]="item.name">
+      </td>
+      <td>
+        {{ item.value }}
+      </td>
+    </tr>
+  </table>
+</div>

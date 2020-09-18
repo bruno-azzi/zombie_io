@@ -2,9 +2,19 @@
 
 [data-component='trade'] {
 
-  .trade-column {
-    [data-component='button'] {
-      width: 100%;
+  .trade-col {
+    order: 1;
+
+    @include md {
+      order: 0;
+    }
+  }
+
+  .surv-col {
+    margin: 0 0 60px;
+
+    @include md {
+      margin: 0 0 20px;
     }
   }
 
@@ -18,8 +28,99 @@
   }
 
   [data-component='inventory'] {
-    .item {
-      cursor: pointer;
+    margin: 0 -12px;
+
+    @include md {
+      flex-wrap: wrap;
+    }
+
+    @include large-desktop {
+      flex-wrap: nowrap;
+    }
+
+    .item-column {
+      @include md {
+        width: 50%;
+        box-sizing: border-box;
+        margin: 0 0 24px;
+      }
+
+      @include large-desktop {
+        width: 100%;
+        box-sizing: content-box;
+        margin: 0;
+      }
+
+      &:last-child {
+        margin: 0;
+      }
+
+      .item {
+        cursor: pointer;
+
+        .item-name {
+          font-size: 14px;
+
+          @include large-desktop {
+            font-size: 16px;
+          }
+        }
+
+        .item-img {
+          @include large-desktop {
+            bottom: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .empty-inventory {
+    text-align: center;
+    padding: 30px 0 20px;
+
+    p {
+      color: $white-grey;
+      font-size: 24px;
+      margin: 0 0 30px;
+    }
+  }
+
+  .middle-column-wrapper {
+    background-color: $light-grey;
+    border-radius: 8px;
+    height: 100%;
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: column;
+
+    @include lg {
+      padding: 15px;
+    }
+
+    [data-component='price-table'] {
+      margin: 0 0 15px;
+
+      @include md {
+        margin: 0;
+      }
+    }
+
+    [data-component='button'] {
+      width: 100%;
+      margin: 0 0 10px;
+
+      @include md {
+        margin: 0 0 24px;
+      }
+    }
+
+    app-button {
+      order: 1;
+
+      @include md {
+        order: 0;
+      }
     }
   }
 

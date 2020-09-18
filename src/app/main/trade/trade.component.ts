@@ -21,6 +21,12 @@ export class TradeComponent implements OnInit {
   secondSurvivorLoading = false;
   survivors: Survivor[];
   filteredSurvivors: Survivor[];
+  resetedInventory = {
+    fijiWater: 0,
+    campbellSoup: 0,
+    firstAid: 0,
+    ak47: 0
+  };
   calculateInventoryValue = InventoryManagement.calculateInventoryValue;
 
   constructor(
@@ -69,7 +75,7 @@ export class TradeComponent implements OnInit {
     this.loading = true;
 
     this.service.get().subscribe((data: Survivor[]) => {
-      this.survivors = data;
+      this.survivors = data.filter(survivor => !survivor.infected);
       this.filteredSurvivors = this.survivors;
       this.loading = false;
     }, error => {
@@ -81,8 +87,8 @@ export class TradeComponent implements OnInit {
     const firstSurvivor = this.form.get('firstSurvivor').value;
     const secondSurvivor = this.form.get('secondSurvivor').value;
 
-    this.filteredSurvivors = this.survivors.filter(item => {
-      return item.id !== firstSurvivor.id && item.id !== secondSurvivor.id && !survivor.infected;
+    this.filteredSurvivors = this.survivors.filter(surv => {
+      return surv.id !== firstSurvivor.id && surv.id !== secondSurvivor.id;
     });
 
     this.resetOffersAndInventories(type);
@@ -90,19 +96,12 @@ export class TradeComponent implements OnInit {
   }
 
   resetOffersAndInventories(type: string) {
-    const resetedForm = {
-      fijiWater: 0,
-      campbellSoup: 0,
-      firstAid: 0,
-      ak47: 0
-    };
-
     if (type === 'firstSurvivor') {
-      this.form.get('firstInventory').patchValue(resetedForm);
-      this.form.get('firstOffer').patchValue(resetedForm);
+      this.form.get('firstInventory').patchValue(this.resetedInventory);
+      this.form.get('firstOffer').patchValue(this.resetedInventory);
     } else {
-      this.form.get('secondInventory').patchValue(resetedForm);
-      this.form.get('secondOffer').patchValue(resetedForm);
+      this.form.get('secondInventory').patchValue(this.resetedInventory);
+      this.form.get('secondOffer').patchValue(this.resetedInventory);
     }
   }
 
@@ -129,11 +128,13 @@ export class TradeComponent implements OnInit {
 
   addItemToOffer({ name, amount }, type: string) {
     if (type === 'firstOffer') {
-      this.form.get('firstOffer').get(name).patchValue(amount);
-      this.form.get('firstOffer').get(name).setValidators([Validators.max(amount)]);
+      this.form.get('firstOffer').get(name).patchValue(amount > 0 ? 1 : 0);
+      this.form.get('firstOffer').get(name).setValidators([Validators.max(amount - 1)]);
+      this.form.get('firstOffer').get(name).markAsDirty();
     } else {
-      this.form.get('secondOffer').get(name).patchValue(amount);
-      this.form.get('secondOffer').get(name).setValidators([Validators.max(amount)]);
+      this.form.get('secondOffer').get(name).patchValue(amount > 0 ? 1 : 0);
+      this.form.get('secondOffer').get(name).setValidators([Validators.max(amount - 1)]);
+      this.form.get('secondOffer').get(name).markAsDirty();
     }
   }
 
@@ -150,11 +151,11 @@ export class TradeComponent implements OnInit {
 
       const id = this.form.get('firstSurvivor').value.id;
       const payload = this.createPayload();
-      console.log('payload', payload);
+
       this.service.trade(id, payload).subscribe(data => {
-        console.log('response', data);
         this.loading = false;
-        this.alert.showSuccess('The trade was successful');
+        this.alert.showSuccess('Success', 'The trade was successful');
+        this.prepareToNewTrade();
       }, error => {
         this.loading = false;
       });
@@ -163,12 +164,25 @@ export class TradeComponent implements OnInit {
 
   createPayload() {
     const payload = {
-      name: this.form.get('secondSurvivor').value.name,
-      pick: InventoryManagement.parseItemsToString(this.form.get('firstOffer').value),
-      payment: InventoryManagement.parseItemsToString(this.form.get('secondOffer').value)
+      consumer: {
+        name: this.form.get('secondSurvivor').value.name,
+        pick: InventoryManagement.parseItemsToString(this.form.get('firstOffer').value),
+        payment: InventoryManagement.parseItemsToString(this.form.get('secondOffer').value)
+      }
     };
 
-    return payload;
+    return JSON.stringify(payload);
+  }
+
+  prepareToNewTrade() {
+    const firstSurvivorId = this.form.get('firstSurvivor').value.id;
+    const secondSurvivorId = this.form.get('secondSurvivor').value.id;
+
+    this.getSurvivorInventory(firstSurvivorId, 'firstSurvivor');
+    this.getSurvivorInventory(secondSurvivorId, 'secondSurvivor');
+
+    this.form.get('firstOffer').patchValue(this.resetedInventory);
+    this.form.get('secondOffer').patchValue(this.resetedInventory);
   }
 
 }

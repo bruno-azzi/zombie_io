@@ -42,6 +42,10 @@ export class InputComponent implements OnInit {
     this.inputChanged.emit(change);
   }
 
+  onFocus(event) {
+    event.target.select();
+  }
+
   writeValue(): void {}
 
   registerOnChange(): void {}

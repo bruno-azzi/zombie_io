@@ -26,7 +26,6 @@ export class ReportModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('this.infectedSurvivor',this.infectedSurvivor)
     this.getSurvivors();
   }
 
@@ -45,8 +44,8 @@ export class ReportModalComponent implements OnInit {
     this.loading = true;
 
     this.service.flagAsInfected(this.currentSurvivor.value.id, this.infectedSurvivor.id).subscribe(data => {
-      console.log(data);
-      this.alert.showSuccess('Success', `${this.infectedSurvivor.name} was successfully flagged as infected`);
+      this.alert.showSuccess('Success', `<strong>${this.infectedSurvivor.name}</strong> was successfully flagged as infected`);
+      this.closeModal();
       this.loading = false;
     }, error => {
       this.loading = false;

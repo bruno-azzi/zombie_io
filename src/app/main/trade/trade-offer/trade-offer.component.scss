@@ -2,25 +2,52 @@
 
 [data-component='trade-offer'] {
   position: relative;
+  margin: 0 0 20px;
+
+  @include md {
+    margin: 0 0 30px;
+  }
 
   .trade-header {
     background-color: $light-grey;
     padding: 20px;
     border: 1px solid $green;
-    border-radius: 8px 8px 0 0;
+    border-radius: 8px;
+
+    &.selected {
+      border-radius: 8px 8px 0 0;
+    }
+  }
+
+  .title {
+    font-size: 20px;
+    color: $green;
+    margin: 0 0 12px;
   }
 
   [data-component='dropdown'] {
-    margin: 0;
+    margin: 0 0 20px;
     box-shadow: 0 0 10px 0 rgba($color: $dark-grey, $alpha: 1);
+
+    @include lg {
+      margin: 0;
+    }
+  }
+
+  [data-component='inventory'] {
+    margin: 0 -12px;
   }
 
   .points-qtd {
-    font-size: 24px;
+    font-size: 20px;
     color: $green;
     font-weight: 600;
     text-align: right;
     display: block;
+
+    @include lg {
+      font-size: 24px;
+    }
   }
 
   .inventory-wrapper {

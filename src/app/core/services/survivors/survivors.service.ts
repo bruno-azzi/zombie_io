@@ -1,7 +1,7 @@
 import { Observable, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ApiItem, Survivor } from '../../types/survivor.types';
 import { environment } from '../../../../environments/environment';
@@ -80,16 +80,17 @@ export class SurvivorsService {
     return this.http.patch(`${environment.apiUrl}/people/${id}.json`, payload);
   }
 
-  trade(id, payload) {
-    return this.http.post(`${environment.apiUrl}/people/${id}/properties/trade_item.json`, {
-      name: 'teste',
-      payment: 'Fiji water:1',
-      pick: 'Fiji water:1'
+  trade(id: string, payload: string) {
+    return this.http.post(`${environment.apiUrl}/people/${id}/properties/trade_item.json`, payload, {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+        'Content-type': 'application/json; charset=UTF-8'
+      })
     });
   }
 
   flagAsInfected(reporterId: string, infectedPersonId) {
-    return this.http.post(`${environment.apiUrl}/${reporterId}/report_infection.json`, {
+    return this.http.post(`${environment.apiUrl}/people/${reporterId}/report_infection.json`, {
       infected: infectedPersonId
     });
   }

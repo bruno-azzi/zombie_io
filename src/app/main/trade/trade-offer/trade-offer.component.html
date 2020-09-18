@@ -1,7 +1,9 @@
 <div data-component="trade-offer">
-  <div class="trade-header">
+  <div class="trade-header" [class.selected]="selectControl.value">
     <div class="row align-items-center justify-content-between">
-      <div class="col-md-6">
+      <div class="col-lg-8 col-xl-6">
+        <h2 class="title" *ngIf="selectControl.value">{{ selectControl.value.name }}'s offer</h2>
+
         <app-dropdown
           [formControl]="selectControl"
           [options]="survivors"
@@ -11,7 +13,7 @@
         </app-dropdown>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-lg-4 col-xl-6">
         <span class="points-qtd">{{ calculateInventoryValue(inventoryForm.value) }} Points</span>
       </div>
     </div>
@@ -24,7 +26,7 @@
     </div>
 
     <div class="amount-error" *ngIf="inventoryForm.invalid">
-      <p class="error-label">Incoherent amount</p>
+      <p class="error-label">For your safety, you must keep at least 1 item of each category</p>
     </div>
 
     <app-inventory

@@ -12,6 +12,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { FilterComponent } from './survivor-list/filter/filter.component';
 import { SurvivorListComponent } from './survivor-list/survivor-list.component';
 import { TradeOfferComponent } from './trade/trade-offer/trade-offer.component';
+import { PriceTableComponent } from './trade/price-table/price-table.component';
 import { DataCardComponent } from './global-reports/data-card/data-card.component';
 import { GlobalReportsComponent } from './global-reports/global-reports.component';
 import { CreateEditSurvivorComponent } from './create-edit-survivor/create-edit-survivor.component';
@@ -21,10 +22,11 @@ import { CreateEditSurvivorComponent } from './create-edit-survivor/create-edit-
     TradeComponent,
     FilterComponent,
     DataCardComponent,
+    PriceTableComponent,
     TradeOfferComponent,
     SurvivorListComponent,
     GlobalReportsComponent,
-    CreateEditSurvivorComponent,
+    CreateEditSurvivorComponent
   ],
   imports: [
     CommonModule,
